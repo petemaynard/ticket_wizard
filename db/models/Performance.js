@@ -27,7 +27,7 @@ Performance.init(
          type: DataTypes.DATEONLY,
       },
       popularity_index: {
-         type: DataTypes.DECIMAL,
+         type: DataTypes.DECIMAL(2,1),
       },
       description: {
          type: DataTypes.TEXT,

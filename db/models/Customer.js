@@ -29,8 +29,11 @@ Customer.init(
          allowNull: true,
       },
       state: {
-         type: DataTypes.CHAR(2),
-         allowNull: false,  // Required for taxes
+         type: DataTypes.STRING,
+         allowNull: false,
+         validate: {
+            len: [2],
+         },
       },
       zip: {
          type: DataTypes.INTEGER,

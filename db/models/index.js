@@ -1,7 +1,8 @@
 const Customer = require('./Customer');
 const CustTicket = require('./CustTicket');
 const Performance = require('./Performance');
-// const Tax = require('.Tax');
+const TaxRate = require('./TaxRate');
+const TicketPrices = require('./TicketPrices');
 
 
 CustTicket.belongsTo(Customer, {
@@ -20,4 +21,4 @@ Performance.hasMany(Customer, {
 
 
 
-module.exports = { Customer, CustTicket, Performance };  // Export "Tax", if using
+module.exports = { Customer, CustTicket, Performance, TaxRate, TicketPrices };

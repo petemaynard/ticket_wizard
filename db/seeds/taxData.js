@@ -1,4 +1,4 @@
-const { TaxRate } = require('../models')
+const { TaxRate } = require('../models');
 
 const taxData= 
 [

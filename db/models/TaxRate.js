@@ -6,13 +6,16 @@ class TaxRate extends Model {}
 TaxRate.init(
   {
     state: {
-      type: DataTypes.CHAR(2),
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
+      validate: {
+         len: [2],
+      },
     },
     rate: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(3,2),
       allowNull: false,
     },
   },

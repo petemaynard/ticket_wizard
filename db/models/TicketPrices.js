@@ -12,7 +12,7 @@ TicketPrices.init(
       autoIncrement: false,
     },
     seat_grade_desc: {
-      type: DataTypes.STING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     seat_base_price: {
