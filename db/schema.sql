@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS whatever_db;
-CREATE DATABASE whatever_db;
+DROP DATABASE IF EXISTS wizard_db;
+CREATE DATABASE wizard_db;
