@@ -44,7 +44,7 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.past('/createAccount', async (req, res) => {
+router.post('/createAccount', async (req, res) => {
     try {
         const newCustomer = req.body;
         newCustomer.password = req.body.password;
