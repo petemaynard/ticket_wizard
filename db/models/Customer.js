@@ -36,6 +36,10 @@ Customer.init(
          type: DataTypes.INTEGER,
          allowNull: true,
       },
+      username: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
       password: {
          type: DataTypes.STRING,
          allowNull: false,
