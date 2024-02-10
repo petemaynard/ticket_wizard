@@ -4,7 +4,6 @@
   --header: aliceblue;
 }
 
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--header);
@@ -12,5 +11,14 @@ body {
 }
 
 #title {
-  font-size: 200%;
+  font-size: 250%;
+}
+
+.table {
+  color: var(--header);
+}
+
+h3 {
+  text-decoration: underline solid var(--secondary) 20%;
+  text-decoration-skip-ink: none;
 }
