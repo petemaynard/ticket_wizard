@@ -4,7 +4,7 @@ const { Customer } = require('../../../db/models');
 // from moduel 14 lesson 23 controllers/api/userRoutes
 router.post('/login', async (req, res) => {
     try {
-        const userData = await Customer.findOne({ where: { username: req.body.unsername } });
+        const userData = await Customer.findOne({ where: { username: req.body.username } });
 
         if (!userData) {
             res
