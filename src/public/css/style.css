@@ -11,7 +11,7 @@ body {
 }
 
 #title {
-  font-size: 250%;
+  font-size: 300%;
 }
 
 .table {
@@ -19,6 +19,37 @@ body {
 }
 
 h3 {
-  text-decoration: underline solid var(--secondary) 20%;
+  text-decoration: underline solid var(--secondary) 18%;
   text-decoration-skip-ink: none;
 }
+
+.noto-color {
+  font-family: "Noto Color Emoji", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hammersmith-one-regular {
+  font-family: "Hammersmith One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-sans-header {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.dm-sans-body {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+span {
+  color: var(--secondary);
+}
+
