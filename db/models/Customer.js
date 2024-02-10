@@ -55,8 +55,15 @@ Customer.init(
       hooks: {
          beforeCreate: async (newUserData) => {
            newUserData.password = await bcrypt.hash(newUserData.password, 10);
+           //PJM Adding lowercasing of username
+           newUserData.username = await newUserData.username.toLowerCase();
            return newUserData;
          },
+         // PJM Adding lowercasing of username
+         beforeUpdate: async (updatedUserData) => {
+            updatedUserData.username = await updatedUserData.username.toLowerCase();
+            return updatedUserData;
+          },
        },
       sequelize,
       freezeTableName: true,
