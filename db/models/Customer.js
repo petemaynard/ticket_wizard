@@ -28,6 +28,10 @@ Customer.init(
          type: DataTypes.STRING,
          allowNull: true,
       },
+      city: {
+         type:DataTypes.STRING,
+         allowNull: true,
+      },
       state: {
          type: DataTypes.STRING,
          allowNull: false,
@@ -38,8 +42,15 @@ Customer.init(
       zip: {
          type: DataTypes.INTEGER,
          allowNull: true,
+         validate: {
+            len: [5],
+         },
       },
       username: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      email: {
          type: DataTypes.STRING,
          allowNull: false,
       },
