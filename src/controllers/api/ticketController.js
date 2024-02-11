@@ -5,7 +5,9 @@ const { Performance } = require('../../../db/models');
 router.get('/store', async (req, res) => {
     try {
         const ticketData = await TicketPrices.findAll();
-        const multiplier = await Performance.findAll({ include: { band_name: } && { date: }});
+        const multiplier = await Performance.findAll({ 
+         // include: { band_name: } && { date: }
+      });
         const ticketCost = ticketData.map(seat_base_price => seat_base_price * multiplier)
 
         res.json(ticketCost);

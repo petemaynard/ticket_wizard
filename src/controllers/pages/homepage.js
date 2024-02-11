@@ -1,16 +1,25 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 
-router.get('/', (req, res) => {   // Insert middleware authorization checker
-db.query('SELECT date, artist, city, venue from performance ORDER BY date asc LIMIT 5;', function (error, result) {
-      if(error){
-      console.log("Unable to query performance table");
-   } else {
-      console.log(result);
-   }
-})
+router.get('/', async (req, res) => {
+   try {
+      // Get top 5 performances
+      const performanceData = await Performance.findAll({
+         limit: 5,
+      });
 
-    res.render('homepage');
+
+      const performances = performanceData.map((perform) => perform.get({ plain: true}));
+   
+      console.log("First performance id is: " + performance[0].id);
+      console.log("First perfomance artist is: " + performance[0].artist);
+
+      // Time to create the homepage handlebars page
+      res.render('homepage', {performances});
+   } catch (err) {
+      res.status(500).json(err);
+       }
+
 });
 
 module.exports = router;
