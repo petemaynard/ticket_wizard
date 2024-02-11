@@ -6,11 +6,12 @@ const { Customer } = require('../../../db/models');
 router.post('/', async (req, res) => {
     try {
       const userData = await Customer.create({
-        f_name: "f_name",
-        l_name: "l_name",
-        address: "address",
-        state: "MN",
-        zip: 55413,
+        f_name: req.body.f_name,
+        l_name: req.body.l_name,
+        address: req.body.address,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
