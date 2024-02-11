@@ -47,9 +47,8 @@ router.post('/logout', (req, res) => {
 router.post('/createAccount', async (req, res) => {
     try {
         const newCustomer = req.body;
-        newCustomer.password = req.body.password;
         const customerData = await Customer.create(newCustomer);
-        res.status(400).json(customerData);
+        res.status(201).json(customerData);
     } catch (err) {
         res.status(400).json(err);
     }

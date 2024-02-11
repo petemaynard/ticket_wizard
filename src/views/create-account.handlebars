@@ -4,38 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
-    <!-- Semantic UI CSS link -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <style>
-        .ui.container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 60vh; /* Adjust height as needed */
-        }
-        .centered-form {
-            width: 450px; /* Adjust width as needed */
-            margin: 0 auto; /* Center the div horizontally */
-        }
-        .ui.form .field {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px; /* Add spacing between fields */
-            padding-left: 0px;
-            margin-left: 0px;
-        }
-        .ui.form .field label {
-            margin-right: 5px;
-            text-align: right;
-            flex: 0 0 75px; /* Adjust label width as needed */
-        }
-        .ui.form button {
-            margin-top: 20px; /* Adjust margin as needed */
-            margin-left: auto; /* Center the button */
-            margin-right: auto; /* Center the button */
-            display: block; /* Ensure the button takes up full width */
-        }
-    </style>
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
     <div class="ui container">
@@ -52,7 +23,6 @@
                     <label>Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-
                 <button type="submit" class="ui primary button">Create Account</button>
             </form>
         </div>
