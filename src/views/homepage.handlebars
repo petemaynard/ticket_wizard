@@ -13,7 +13,7 @@
         />
       </div>
       <div class="col">
-        <button type="submit" class="btn btn-primary hammersmith-one-regular">Search</button>
+        <button type="submit" class="btn btn-contrast hammersmith-one-regular">Search</button>
       </div>
     </div>
 
@@ -38,10 +38,10 @@
     </div>
 
     <h3 class="card-title py-2 dm-sans-header">Upcoming Shows</h3>
-    <div class="row border">
+    <div class="row">
       <div class="col">
 
-        <table class="table dm-sans-body">
+        <table class="table dm-sans-body border">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -75,30 +75,31 @@
     </div>
 
   </div>
-
-  <aside class="col-auto border p-2 ms-3">
-    <form class="p-2">
+  {{#unless logged_in}}
+  <aside class="col-auto border p-2 mt-2 ms-2 dm-sans-body">
+    <form class="p-2 login-form">
       <div class="mb-3">
-        <label for="enterUsername" class="form-label">Username</label>
+        <label for="enterUsername" class="form-label"><strong>Username</strong></label>
         <input
           type="text"
-          id="enterUsername"
+          id="username-login"
           class="form-control"
           placeholder="Enter your username"
         />
       </div>
       <div class="mb-3">
-        <label for="enterPassword" class="form-label">Password</label>
+        <label for="enterPassword" class="form-label"><strong>Password</strong></label>
         <input
           type="text"
-          id="enterPassword"
+          id="password-login"
           class="form-control"
           placeholder="Enter your password"
         />
       </div>
-      <button type="submit" class="btn btn-primary mt-2 me-1">Login</button>
-      <a href="/createaccount"><button type="button" class="btn btn-primary mt-2">Create Account</button></a>
+      <button type="submit" class="btn btn-contrast mt-2 me-1">Login</button>
+      <a href="/login"><button type="button" class="btn btn-contrast mt-2">Create Account</button></a>
     </form>
   </aside>
+  {{/unless}}
 
 </div>

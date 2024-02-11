@@ -5,8 +5,8 @@ const userControl = require('./userController');
 const ticketControl = require('./ticketController');
 
 router.use('/authControl', authControl);
-router.use('/concertController', concertControl);
-router.use('/userController', userControl);
-router.use('/ticketController', ticketControl);
+router.use('/concerts', concertControl);
+router.use('/users', userControl);
+router.use('/tickets', ticketControl);
 
 module.exports = router;

@@ -38,8 +38,15 @@ Customer.init(
       zip: {
          type: DataTypes.INTEGER,
          allowNull: true,
+         validate: {
+            len: [5],
+         },
       },
       username: {
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      email: {
          type: DataTypes.STRING,
          allowNull: false,
       },
