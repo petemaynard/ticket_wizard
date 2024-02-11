@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../src/config/connection');
 
-class Performance extends Model { }
+class Artist extends Model { }
 
-Performance.init(
+Artist.init(
    {
-      perf_id: {
+      artist_id: {
          type: DataTypes.INTEGER,
          allowNull: false,
          primaryKey: true,
@@ -14,17 +14,6 @@ Performance.init(
       artist: {
          type: DataTypes.STRING,
          allowNull: false,
-      },
-      city: {
-         type: DataTypes.STRING,
-         allowNull: false,
-      },
-      venue: {
-         type: DataTypes.STRING,
-         allowNull: false,
-      },
-      date: {
-         type: DataTypes.DATEONLY,
       },
       popularity_index: {
          type: DataTypes.DECIMAL(2,1),
@@ -37,8 +26,8 @@ Performance.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'performance',
+      modelName: 'artist',
    }
 );
 
-module.exports = Performance;
+module.exports = Artist;
