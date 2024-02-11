@@ -1,32 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <link rel="stylesheet" href="../public/css/style.css">
-</head>
-<body>
-    <div class="ui container">
-        <div class="ui raised segment form-width centered-form">
-            <h1 class="ui center aligned header">Ticket Wizard</h1>
-            <h2 class="ui center aligned header">Login</h2>
-            <form class="ui form center aligned medium header">
-                <div class="field">
-                    <label>Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="field">
-                    <label>Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
+<div class="ui container">
+  <div class="ui raised segment form-width centered-form mt-5">
+    <h2 class="ui center aligned header">Login</h2>
+    <form class="ui form center aligned medium header login-form">
 
-                <button type="submit" class="ui primary button">Login</button>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+      <div class="field">
+        <label>Email:</label>
+        <input type="text" id="username-login" name="username-login" required />
+      </div>
+
+      <div class="field">
+        <label>Password:</label>
+        <input
+          type="password"
+          id="password-login"
+          name="password-login"
+          required
+        />
+      </div>
+
+      <button type="submit" class="ui primary button">Login</button>
+    </form>
+  </div>
+
+  <div class="ui raised segment form-width centered-form mt-5">
+    <h2 class="ui center aligned header">Create Account</h2>
+    <form class="ui form center aligned medium header signup-form">
+
+      <div class="field">
+        <label for="f_name-signup">First Name:</label>
+        <input
+          class="form-input"
+          type="text"
+          id="f_name-signup"
+          name="f_name"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="l_name-signup">Last Name:</label>
+        <input
+          class="form-input"
+          type="text"
+          id="l_name-signup"
+          name="l_name"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="address-signup">Address:</label>
+        <input
+          class="form-input"
+          type="text"
+          id="address-signup"
+          name="address"
+        />
+      </div>
+
+      <div class="field">
+        <label for="state-signup">City:</label>
+        <input class="form-input" type="text" id="city-signup" name="city" />
+      </div>
+
+      <div class="field">
+        <label for="state-signup">State:</label>
+        <input
+          class="form-input"
+          type="text"
+          id="state-signup"
+          name="state"
+          required
+          minlength="2"
+          maxlength="2"
+        />
+      </div>
+
+      <div class="field">
+        <label>Zip:</label>
+        <input
+          type="text"
+          id="zip-signup"
+          name="zip-signup"
+          required
+        />
+      </div>
+      <div class="field">
+        <label>Username:</label>
+        <input
+          type="text"
+          id="username-signup"
+          name="username-signup"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label>Email:</label>
+        <input type="email" id="email-signup" name="email-signup" required />
+      </div>
+
+      <div class="field">
+        <label>Password:</label>
+        <input
+          type="password"
+          id="password-signup"
+          name="password-signup"
+          required
+        />
+      </div>
+
+      <button type="submit" class="ui primary button">Submit</button>
+    </form>
+  </div>
+</div>
+
+<script src="./js/login.js"></script>
