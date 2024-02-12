@@ -78,29 +78,46 @@ span {
   display: flex;
   justify-content:space-around;
   align-items:flex-start;
-  height: 60vh; /* Adjust height as needed */
+  height: 60vh; 
+  margin-bottom: 200px;
 }
 .centered-form {
-  width: 450px; /* Adjust width as needed */
-  margin: 0 auto; /* Center the div horizontally */
+  width: 450px; 
+  margin: 0 auto;
 }
 .ui.form .field {
   display: flex;
   align-items: center;
-  margin-bottom: 10px; /* Add spacing between fields */
+  margin-bottom: 10px; 
   padding-left: 0px;
   margin-left: 0px;
+}
+.ui.form .field:last-child {
+  margin-bottom: 10px;
 }
 .ui.form .field label {
   margin-right: 5px;
   text-align: right;
-  flex: 0 0 75px; /* Adjust label width as needed */
+  flex: 0 0 75px; 
 }
 .ui.form button {
-  margin-top: 20px; /* Adjust margin as needed */
-  margin-left: auto; /* Center the button */
-  margin-right: auto; /* Center the button */
-  display: block; /* Ensure the button takes up full width */
+  margin-top: 20px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block; 
+}
+.stateZip{
+  display: flex;
+}
+.zip {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.state{
+  width: 60%;
+}
+.userName{
+  font-size: 17px;
 }
 
 @media (max-width: 480px) {
