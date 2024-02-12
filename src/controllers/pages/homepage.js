@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       console.log("First performance is: " + fiveEventsSerial[0].artist.artist_name);
 
       //    // Time to create the homepage handlebars page
-          res.render('homepage', {fiveEventsSerial});
+          res.render('homepage', {fiveEventsSerial, logged_in: req.session.logged_in});
 
 
    } catch (err) {

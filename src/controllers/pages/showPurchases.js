@@ -1,33 +1,47 @@
 const router = require('express').Router();
+const { Artist, Venue, PerformanceDates, TicketPrices } = require('../../../db/models');
 const sequelize = require('../../config/connection');
 
-router.get('/purchases', async (req, res) => {
+router.get('/', async (req, res) => {
    try {
+      console.log("Hey, it's the purchases page!");
       // Get list of all concert tickets that logged in user has purchased
-      // Will need to search by cust_tickets.cust_id
-      // This query needs work
-      const purchasesList = await CustTicket.findAll({
+      const purchasesList = await PerformanceDates.findAll({
          include: [
-            {
-               model: Performance,
-               attributes: ['artist', 'city', 'date'],
-            },
-            {
-               model: Ticketprices,
-               attributes: ['seat_grade_name']
-            }
-         ]
-      });
+            { model: Artist},
+            // { model: Venue},
+            // { model: TicketPrices}
+         ],
+         order: [['event_date', 'ASC']],
 
+      });
+      /*  The above sequelize query in simple SQL
+      select PD.event_date, A.artist_name, V.venue_name, TP.seat_grade_desc, P.seat_count
+      from performancedates PD
+      inner join artist A
+      on PD.artist_id = A.artist_id
+      inner join purchases P
+      on PD.perf_date_id = P.perf_id
+      inner join venue V
+      on PD.venue_id = V.venue_id
+      inner join ticketprices TP
+      on P.seat_grade = TP.seat_grade
+      where cust_tix_id = 1
+      */
+
+      console.log("I completed the query.")
       const purchases = purchasesList.map((purchase) => purchase.get({ plain: true }));
 
       //These are here just for confirmation data is coming through
-      console.log("First purchase id is: " + performance[0].id);
-      console.log("First purchase seat_grade is: " + performance[0].seat_grade);
+      console.log("First purchase artist is: " + purchasesList[0].artist.artist_name);
+      // console.log("First purchase seat_grade is: " + performance[0].seat_grade);
 
       res.render('showpurchases', { purchases });
 
    } catch (err) {
+      console.log("Query failed");
       res.status(500).json(err);
    }
 });
+
+module.exports = router;
