@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Performance } = require('../../../db/models');
+const { Artist, Venue } = require('../../../db/models');
 var currentSearch
 
 router.get('/search', async (req, res) => {

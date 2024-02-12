@@ -1,11 +1,10 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const db = require('../../../db/models'); // Update with the path to your database module
 
-router.get('/search', async (req, res) => {
-    try {
-
-    } catch (err) {
-        res.status(500).json({ error: err.message })
-    }
+// GET route for the search page
+router.get('/', (req, res) => {
+  res.render('search');
 });
 
 module.exports = router;

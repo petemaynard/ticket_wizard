@@ -1,4 +1,4 @@
-<div class="ui container">
+<div class="ui container" style="display: flex; flex-direction: column;">
   <div class="ui raised segment form-width centered-form mt-5">
     <h2 class="ui center aligned header">Ticket Wizard Search</h2>
     <form class="ui form center aligned medium header search-form" id="search-form">
@@ -10,6 +10,10 @@
 
       <button type="submit" class="ui primary button">Search</button>
     </form>
+  </div>
+  <!-- Results container will now definitely be below the search form -->
+  <div id="results-container" class="ui raised segment form-width centered-form mt-5">
+    <!-- Search results will be dynamically inserted here by the search.js script -->
   </div>
 </div>
 

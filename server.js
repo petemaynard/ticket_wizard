@@ -35,6 +35,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/src/public')));
 
+const cors = require('cors');
+    app.use(cors());
+
+const concertController = require('./controllers/api/concertController');
+app.use('/api/concert', concertController);
+
+const searchController = require('./controllers/pages/search');
+app.use('/search', searchController);
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
