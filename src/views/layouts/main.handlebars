@@ -26,15 +26,56 @@
     <nav
       class="d-flex flex-row justify-content-between align-items-center border-bottom border-2 mx-2"
     >
-      <div class="col-6 ps-2 pt-3 pb-2 my-3 hammersmith-one-regular text-nowrap" id="title"><a
-          href="/"
-        ><span class="noto-color">🔮</span>
+      <div
+        class="col-6 ps-2 pt-3 pb-2 my-3 hammersmith-one-regular text-nowrap"
+        id="title"
+      ><a href="/"><span class="noto-color">🔮</span>
           <span>Ticket</span>Wizard<span>!</span></a></div>
-      {{#if logged_in}}
-      <div class="p-3">
-        <button class="btn btn-light me-3" id="viewAcct">View Account</button>
-        <button class="btn btn-light" id="logout">Logout</button>
+
+      <div class="d-block d-md-none dropdown p-3">
+        <button
+          class="btn btn-contrast dropdown-toggle btn-sm"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >Account</button>
+
+        {{#unless logged_in}}
+          <ul class="dropdown-menu">
+            <li><a
+                class="dropdown-item"
+                href="/login"
+                id="menuLogin"
+              >Login</a></li>
+            <li><a
+                class="dropdown-item"
+                href="/login"
+                id="menuCreateAccount"
+              >Create Account</a></li>
+          </ul>
+        {{/unless}}
+
+        {{#if logged_in}}
+          <ul class="dropdown-menu">
+            <li><a
+                class="dropdown-item"
+                href="/user"
+                id="menuLogin"
+              >View Account</a></li>
+            <li><a
+                class="dropdown-item"
+                href="#"
+                id="logout"
+              >Logout</a></li>
+          </ul>
+        {{/if}}
       </div>
+
+      {{#if logged_in}}
+        <div class="d-none d-md-block p-3">
+          <button class="btn btn-light me-3" id="viewAcct">View Account</button>
+          <button class="btn btn-light" id="logout">Logout</button>
+        </div>
       {{/if}}
     </nav>
     <main class="mx-2">
@@ -51,6 +92,11 @@
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
   </body>
 
 </html>

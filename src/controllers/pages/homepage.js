@@ -3,7 +3,6 @@ const { Artist, Venue, PerformanceDates } = require('../../../db/models');
 const sequelize = require('../../config/connection');
 
 router.get('/', async (req, res) => {
-   console.log("Hey, it's the home page");
    try {
       const fiveNextEvents = await PerformanceDates.findAll({
          include: [
@@ -25,10 +24,9 @@ router.get('/', async (req, res) => {
       */
 
       const fiveEventsSerial = fiveNextEvents.map(event => event.get({plain: true}));
-      console.log("First performance is: " + fiveEventsSerial[0].artist.artist_name);
 
       //    // Time to create the homepage handlebars page
-          res.render('homepage', {fiveEventsSerial});
+          res.render('homepage', {fiveEventsSerial, logged_in: req.session.logged_in},);
 
 
    } catch (err) {

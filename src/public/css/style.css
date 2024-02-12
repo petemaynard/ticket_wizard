@@ -107,4 +107,18 @@ span {
   #title {
     font-size: 250%;
   }
+  .dm-sans-header {
+    font-size: 110%;
+    font-weight: 300;
+  }
+  .dm-sans-body {
+    font-size: 90%;
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 400px) {
+  #title {
+    font-size: 220%;
+  }
 }
