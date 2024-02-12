@@ -19,10 +19,10 @@
 
     <h3 class="card-title py-2 dm-sans-header">Featured Artist</h3>
     <div class="row border mb-5">
-      <div class="col-md-4">
+      <div class="col-md-4 text-center">
         <img
           src="/images/featured-artist-placeholder.jpg"
-          class="img-fluid rounded-start py-3"
+          class="img-fluid rounded-start p-1 pt-3 py-md-3"
           alt="featured artist"
         />
       </div>
@@ -30,7 +30,7 @@
 
         <div class="mt-3">
           <h4 class="mb-3 pt-2 dm-sans-header">Electric Dream Machine</h4>
-          <p class="py-2 dm-sans-body">Get ready to experience sonic magic when you see this
+          <p class="py-2 mb-3 dm-sans-body">Get ready to experience sonic magic when you see this
             sultry glam rock band formed by Philadelphia bar owners Charlie Kelly
             and Dennis Reynolds.</p>
         </div>
@@ -76,7 +76,7 @@
 
   </div>
   {{#unless logged_in}}
-  <aside class="col-auto border p-2 mt-2 ms-2 dm-sans-body">
+  <aside class="col-auto d-none d-md-block border p-2 mt-2 ms-2 dm-sans-body">
     <form class="p-2 login-form">
       <div class="mb-3">
         <label for="enterUsername" class="form-label"><strong>Username</strong></label>

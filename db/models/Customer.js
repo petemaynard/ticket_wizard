@@ -58,7 +58,7 @@ Customer.init(
          type: DataTypes.STRING,
          allowNull: false,
          validate: {
-            len: [8],
+            len: [8, 20],
          },
       },
    },

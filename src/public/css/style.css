@@ -103,3 +103,8 @@ span {
   display: block; /* Ensure the button takes up full width */
 }
 
+@media (max-width: 480px) {
+  #title {
+    font-size: 250%;
+  }
+}
