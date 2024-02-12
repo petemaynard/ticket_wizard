@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
+    console.log('Route to the search page');
     try {
 
     } catch (err) {
