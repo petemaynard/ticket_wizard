@@ -42,13 +42,13 @@
                      <th scope="col">City</th>
                   </tr>
                </thead>
-               {{#each performance as |performance| }}
+               {{#each fiveEventsSerial as |fNE| }}
                <tbody>
                   <tr>
                      <th scope="row"></th>
-                     <td>{{performance.date}}</td>
-                     <td>{{performance.artist}}</td>
-                     <td>{{performance.city}}</td>
+                     <td>{{event_date}}</td>
+                     <td>{{artist.artist_name}}</td>
+                     <td>{{venue.city}}</td>
                   </tr>
                </tbody>
                {{/each}}
