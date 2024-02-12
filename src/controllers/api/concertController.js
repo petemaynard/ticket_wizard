@@ -2,9 +2,9 @@ const router = require('express').Router();
 const { Performance } = require('../../../db/models');
 var currentSearch
 
-router.get('/', async (req, res) => {
-    try {
-        const searchResults = await Performance.findAll({ where: { city: currentSearch } || { artist: currentSearch }});
+//router.get('/', async (req, res) => {
+   // try {
+      //  const searchResults = await Performance.findAll({ where: { city: currentSearch } || { artist: currentSearch }});
 
 //         res.json(searchResults);
 

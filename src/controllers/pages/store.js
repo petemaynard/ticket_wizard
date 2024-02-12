@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Artist, TicketPrices } = require('../../../db/models');
+const { Artist, Venue, PerformanceDates, TicketPrices, TaxRate, Purchases } = require('../../../db/models');
 const search = searchObject;//searchObjest is a standin for the item the user picks form the search results page
 
 
@@ -21,7 +21,12 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     console.log('attempting to post initial Purchase data');
     try {
-        
+        Purchases.create({
+            cust_id: ,
+            perf_id: ,
+            seat_grade: input_field.value,
+            seat_count: input_field.value
+        });
     } catch (error) {
         console.log("Post failed");
         res.status(500).json(err);
