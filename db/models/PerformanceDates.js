@@ -11,12 +11,25 @@ PerformanceDates.init(
          primaryKey: true,
          autoIncrement: true,
       },
-      artist_id: {
-         type: DataTypes.STRING,
+      event_date: {
+         type: DataTypes.DATEONLY,
          allowNull: false,
       },
-      date: {
-         type: DataTypes.DECIMAL(2,1),
+      venue_id: {
+         type: DataTypes.INTEGER,
+         allowNull: false,
+         references: {
+            model: 'venue',
+            key: 'venue_id',
+         }
+      },
+      artist_id: {
+         type: DataTypes.INTEGER,
+         allowNull: false,
+         references: {
+            model: 'artist',
+            key: 'artist_id',
+         }
       },
    },
    {

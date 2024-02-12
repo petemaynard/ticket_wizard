@@ -24,8 +24,8 @@ Venue.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'performance',
+      modelName: 'venue',
    }
 );
 
-module.exports = Performance;
+module.exports = Venue;

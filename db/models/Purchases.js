@@ -23,15 +23,15 @@ Purchases.init(
          type: DataTypes.INTEGER,
          allowNull: false,
          references: {
-            model: 'performance',
-            key: 'perf_id'
+            model: 'performanceDates',
+            key: 'perf_date_id'
          }
       },
       seat_grade: {
          type: DataTypes.STRING,
          allowNull: false,
          references: {
-            model: 'ticketprices',
+            model: 'ticketPrices',
             key: 'seat_grade'
          }
       },

@@ -11,7 +11,7 @@ Artist.init(
          primaryKey: true,
          autoIncrement: true,
       },
-      artist: {
+      artist_name: {
          type: DataTypes.STRING,
          allowNull: false,
       },
