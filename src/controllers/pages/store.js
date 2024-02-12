@@ -18,4 +18,14 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.post('/', async (req, res) => {
+    console.log('attempting to post initial Purchase data');
+    try {
+        
+    } catch (error) {
+        console.log("Post failed");
+        res.status(500).json(err);
+    }
+})
+
 module.exports = router;

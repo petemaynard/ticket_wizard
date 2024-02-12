@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Artist, Venue, PerformanceDates, TicketPrices, TaxRate } = require('../../../db/models');
+const { Artist, Venue, PerformanceDates, TicketPrices, TaxRate, Purchases } = require('../../../db/models');
 
 router.get('/', async (req, res) => {
     try {
