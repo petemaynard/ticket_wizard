@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/', async (req, res) => {
+router.get('/search', async (req, res) => {
     try {
 
     } catch (err) {
