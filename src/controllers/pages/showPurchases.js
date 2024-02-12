@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Artist, Venue, PerformanceDates, TicketPrices } = require('../../../db/models');
+const { Artist, Venue, PerformanceDates, TicketPrices, Purchases } = require('../../../db/models');
 const sequelize = require('../../config/connection');
 
 router.get('/', async (req, res) => {
@@ -9,11 +9,13 @@ router.get('/', async (req, res) => {
       const purchasesList = await PerformanceDates.findAll({
          include: [
             { model: Artist},
-            // { model: Venue},
-            // { model: TicketPrices}
+            { model: Venue},
+            // { model: TicketPrices},  //  Having this breaks it
+            // { model: Purchases,         // Having this breaks it worse
+            //   where: { cust_tix_id: 2},
+            // }
          ],
          order: [['event_date', 'ASC']],
-
       });
       /*  The above sequelize query in simple SQL
       select PD.event_date, A.artist_name, V.venue_name, TP.seat_grade_desc, P.seat_count
