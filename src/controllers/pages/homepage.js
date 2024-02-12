@@ -1,18 +1,15 @@
-const router = require('express').Router();
-const { Artist, Venue, PerformanceDates } = require('../../../db/models');
-const sequelize = require('../../config/connection');
+const router = require("express").Router();
+const { Artist, Venue, PerformanceDates } = require("../../../db/models");
+const sequelize = require("../../config/connection");
 
-router.get('/', async (req, res) => {
-   try {
-      const fiveNextEvents = await PerformanceDates.findAll({
-         include: [
-            { model: Artist },
-            { model: Venue }
-         ],
-         order: [['event_date', 'ASC']],
-         limit: 5
-      });
-      /*  This is the same query written in regular SQL
+router.get("/", async (req, res) => {
+  try {
+    const fiveNextEvents = await PerformanceDates.findAll({
+      include: [{ model: Artist }, { model: Venue }],
+      order: [["event_date", "ASC"]],
+      limit: 5,
+    });
+    /*  This is the same query written in regular SQL
       SELECT PD.event_date, A.artist_name, V.city, V.venue_name 
       FROM performancedates PD 
       inner join artist A 
@@ -23,17 +20,19 @@ router.get('/', async (req, res) => {
       limit 5
       */
 
-      const fiveEventsSerial = fiveNextEvents.map(event => event.get({plain: true}));
+    const fiveEventsSerial = fiveNextEvents.map((event) =>
+      event.get({ plain: true })
+    );
 
-      //    // Time to create the homepage handlebars page
-          res.render('homepage', {fiveEventsSerial, logged_in: req.session.logged_in},);
-
-
-   } catch (err) {
-      console.log("Query failed");
-      res.status(500).json(err);
-   }
-}
-);
+    //    // Time to create the homepage handlebars page
+    res.render("homepage", {
+      fiveEventsSerial,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log("Query failed");
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

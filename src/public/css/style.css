@@ -15,12 +15,12 @@ body {
 
 #title {
   font-size: 300%;
-  color: var(--header)
+  color: var(--header);
 }
 
 a {
   text-decoration: none;
-  color:var(--header);
+  color: var(--header);
 }
 
 a:hover {
@@ -76,19 +76,19 @@ span {
 }
 .ui.container {
   display: flex;
-  justify-content:space-around;
-  align-items:flex-start;
-  height: 60vh; 
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 60vh;
   margin-bottom: 200px;
 }
 .centered-form {
-  width: 450px; 
+  width: 450px;
   margin: 0 auto;
 }
 .ui.form .field {
   display: flex;
   align-items: center;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   padding-left: 0px;
   margin-left: 0px;
 }
@@ -98,25 +98,25 @@ span {
 .ui.form .field label {
   margin-right: 5px;
   text-align: right;
-  flex: 0 0 75px; 
+  flex: 0 0 75px;
 }
 .ui.form button {
-  margin-top: 20px; 
-  margin-left: auto; 
-  margin-right: auto; 
-  display: block; 
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
-.stateZip{
+.stateZip {
   display: flex;
 }
 .zip {
   width: 100%;
   margin-bottom: 10px;
 }
-.state{
+.state {
   width: 60%;
 }
-.userName{
+.userName {
   font-size: 17px;
 }
 
