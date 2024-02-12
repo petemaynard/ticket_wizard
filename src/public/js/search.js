@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function performSearch(searchTerm) {
-  fetch(`/api`)
-  console.log("Hello")
+  fetch(`/api/concert/search?searchQuery=${encodeURIComponent(searchTerm)}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -31,29 +30,41 @@ function updateSearchResults(data) {
   const resultsContainer = document.getElementById("results-container");
   resultsContainer.innerHTML = ""; // Clear previous results
 
-  data.forEach((item) => {
-    const resultElement = createResultElement(item);
-    resultsContainer.appendChild(resultElement);
-  });
+  // Assuming data has 'artists' and 'venues' arrays
+  if (data.artists && data.artists.length > 0) {
+    data.artists.forEach((artist) => {
+      const resultElement = createResultElement(artist, 'artist');
+      resultsContainer.appendChild(resultElement);
+    });
+  }
+
+  if (data.venues && data.venues.length > 0) {
+    data.venues.forEach((venue) => {
+      const resultElement = createResultElement(venue, 'venue');
+      resultsContainer.appendChild(resultElement);
+    });
+  }
 }
 
-function createResultElement(item) {
+function createResultElement(item, type) {
   const resultElement = document.createElement("div");
   resultElement.className = "search-result-item"; // Add a class for styling if needed
-  resultElement.innerHTML = `
-      <h3>${item.artist}</h3>
-      <p>City: ${item.city}</p>
-      <p>Venue: ${item.venue}</p>
+  if (type === 'artist') {
+    resultElement.innerHTML = `
+      <h3>${item.artist_name}</h3>
+      <p>Popularity Index: ${item.popularity_index}</p>
+      <p>Description: ${item.description}</p>
     `;
+  } else if (type === 'venue') {
+    resultElement.innerHTML = `
+      <h3>${item.venue_name}</h3>
+      <p>City: ${item.city}</p>
+    `;
+  }
   // Add event listener if you want to handle clicks on the result item
   resultElement.addEventListener("click", () => {
-    // Handle click event, for example, navigate to the artist's page
-    window.location.href = `/artist/${encodeURIComponent(item.artist)}`;
+    // Handle click event, for example, navigate to the artist's or venue's page
+    // This will need to be adjusted based on your application's routing
   });
   return resultElement;
-}
-
-function displayError(error) {
-  const resultsContainer = document.getElementById("results-container");
-  resultsContainer.innerHTML = `<div class="error-message">Error: ${error.message}</div>`; // Display the error message
 }
