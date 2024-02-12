@@ -1,21 +1,16 @@
 <div class="container-fluid d-flex">
 
-  <div class="col flex-grow-1 p-2 m-2">
+   <div class="col flex-grow-1 p-2 m-2">
 
-    <h3 class="card-title py-2 dm-sans-header">Search for tickets</h3>
-    <div class="row mb-4 border py-3">
-      <div class="col">
-        <input
-          type="text"
-          id="mainSearch"
-          class="form-control"
-          placeholder="Enter artist or city"
-        />
+      <h3 class="card-title py-2 dm-sans-header">Search for tickets</h3>
+      <div class="row mb-4 border py-3">
+         <div class="col">
+            <input type="text" id="mainSearch" class="form-control" placeholder="Enter artist or city" />
+         </div>
+         <div class="col">
+            <button type="submit" class="btn btn-contrast hammersmith-one-regular">Search</button>
+         </div>
       </div>
-      <div class="col">
-        <button type="submit" class="btn btn-contrast hammersmith-one-regular">Search</button>
-      </div>
-    </div>
 
     <h3 class="card-title py-2 dm-sans-header">Featured Artist</h3>
     <div class="row border mb-5">
@@ -41,38 +36,28 @@
     <div class="row">
       <div class="col">
 
-        <table class="table dm-sans-body border">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Date</th>
-              <th scope="col">Artist</th>
-              <th scope="col">City</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td>3/1/24</td>
-              <td>Electric Dream Machine</td>
-              <td>Minneapolis</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>3/4/24</td>
-              <td>Pecan Sandies</td>
-              <td>Los Angeles</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td>3/5/24</td>
-              <td>Death Gary</td>
-              <td>Baltimore</td>
-            </tr>
-          </tbody>
-        </table>
+            <table class="table dm-sans-body">
+               <thead>
+                  <tr>
+                     <th scope="col"></th>
+                     <th scope="col">Date</th>
+                     <th scope="col">Artist</th>
+                     <th scope="col">City</th>
+                  </tr>
+               </thead>
+               {{#each fiveEventsSerial as |fNE| }}
+               <tbody>
+                  <tr>
+                     <th scope="row"></th>
+                     <td>{{event_date}}</td>
+                     <td>{{artist.artist_name}}</td>
+                     <td>{{venue.city}}</td>
+                  </tr>
+               </tbody>
+               {{/each}}
+            </table>
+         </div>
       </div>
-    </div>
 
   </div>
   {{#unless logged_in}}
