@@ -120,6 +120,11 @@ span {
   font-size: 17px;
 }
 
+.search-result-item {
+  color: rgb(255, 255, 255); /* Change this color as needed */
+}
+
+
 @media (max-width: 480px) {
   #title {
     font-size: 250%;

@@ -27,6 +27,9 @@ const sess = {
 
 app.use(session(sess));
 
+const concertRoutes = require('./src/controllers/api/concertController'); 
+app.use('/api/concert', concertRoutes);
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, './src/views'));
@@ -34,6 +37,7 @@ app.set('views', path.join(__dirname, './src/views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/src/public')));
+
 
 app.use(routes);
 
