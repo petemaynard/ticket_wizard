@@ -1,0 +1,29 @@
+     <h3 class="card-title py-2 dm-sans-header">Purchased Tickets</h3>
+      <div class="row border">
+         <div class="col">
+
+            <table class="table dm-sans-body">
+               <thead>
+                  <tr>
+                     <th scope="col"></th>
+                     <th scope="col">Date</th>
+                     <th scope="col">Artist</th>
+                     <th scope="col">City</th>
+                     <th scope="col">Seat Type</th>
+                     <th scope="col">Seats Purchased</th>
+                  </tr>
+               </thead>
+               {{#each purchase as |purchase| }}
+               <tbody>
+                  <tr>
+                     <th scope="row"></th>
+                     <td>{{purchase.performance.date}}</td>
+                     <td>{{purchase.performance.artist}}</td>
+                     <td>{{purchase.performance.city}}</td>
+                     <td>{{purchase.ticketprices.seat_grade_name}}</td>
+                     <td>{{purchase.ticketprices.seat_count}}</td>
+                  </tr>
+               </tbody>
+               {{/each}}
+            </table>
+         </div>
