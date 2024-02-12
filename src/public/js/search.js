@@ -28,20 +28,46 @@ function performSearch(searchTerm) {
 
 function updateSearchResults(data) {
   const resultsContainer = document.getElementById("results-container");
-  resultsContainer.innerHTML = ""; // Clear previous results
+  // Clear previous results and set up a new table structure
+  resultsContainer.innerHTML = `
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Artist Name</th>
+          <th>Description</th>
+          <th>Venue Name</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  `;
+
+  const tableBody = resultsContainer.querySelector('tbody');
 
   // Assuming data has 'artists' and 'venues' arrays
   if (data.artists && data.artists.length > 0) {
     data.artists.forEach((artist) => {
-      const resultElement = createResultElement(artist, 'artist');
-      resultsContainer.appendChild(resultElement);
+      const row = tableBody.insertRow();
+      row.innerHTML = `
+        <td>${artist.artist_name}</td>
+        <td>${artist.description}</td>
+        <td></td> <!-- Venue Name Placeholder -->
+        <td></td> <!-- City Placeholder -->
+      `;
     });
   }
 
   if (data.venues && data.venues.length > 0) {
     data.venues.forEach((venue) => {
-      const resultElement = createResultElement(venue, 'venue');
-      resultsContainer.appendChild(resultElement);
+      const row = tableBody.insertRow();
+      row.innerHTML = `
+        <td></td> <!-- Artist Name Placeholder -->
+        <td></td> <!-- Description Placeholder -->
+        <td>${venue.venue_name}</td>
+        <td>${venue.city}</td>
+      `;
     });
   }
 }

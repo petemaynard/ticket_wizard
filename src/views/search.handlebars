@@ -2,24 +2,43 @@
   <div class="ui raised segment form-width centered-form mt-5">
     <h2 class="ui center aligned header">Ticket Wizard Search</h2>
     <form class="ui form center aligned medium header search-form" id="search-form">
-
       <div class="field">
         <label>Search by</label>
         <input type="text" id="search-query" name="search-query" placeholder="Artist, City, Venue..." required />
       </div>
-
       <button type="submit" class="ui primary button">Search</button>
     </form>
   </div>
   <!-- Results container will now definitely be below the search form -->
   <div id="results-container" class="ui raised segment form-width centered-form mt-5">
-    <style>
-      #results-container .search-result-item {
-        color: rgb(0, 0, 0); /* Change this color as needed */
-      }
-    </style>
     <!-- Search results will be dynamically inserted here by the search.js script -->
   </div>
 </div>
+
+<style>
+  #results-container {
+    background-color: #1a1a1a; /* Dark background for the container */
+    color: #ffffff; /* Light text color */
+    border-collapse: collapse; /* Collapse borders for table */
+    width: 100%; /* Full width table */
+    margin-top: 20px; /* Spacing above the table */
+  }
+
+  #results-container th {
+    background-color: #333333; /* Slightly lighter background for headers */
+    color: #ffffff; /* Light text color for headers */
+    padding: 10px; /* Padding inside header cells */
+    text-align: left; /* Align text to the left */
+  }
+
+  #results-container td {
+    border-top: 1px solid #ffffff; /* White border for the top of each cell */
+    padding: 10px; /* Padding inside cells */
+  }
+
+  #results-container tr:nth-child(even) {
+    background-color:  #d6d6d6; /* Zebra striping for rows */
+  }
+</style>
 
 <script src="./js/search.js"></script>
