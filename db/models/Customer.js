@@ -29,7 +29,7 @@ Customer.init(
          allowNull: true,
       },
       city: {
-         type:DataTypes.STRING,
+         type: DataTypes.STRING,
          allowNull: true,
       },
       state: {
@@ -49,6 +49,7 @@ Customer.init(
       username: {
          type: DataTypes.STRING,
          allowNull: false,
+         unique: true,
       },
       email: {
          type: DataTypes.STRING,
@@ -65,17 +66,22 @@ Customer.init(
    {
       hooks: {
          beforeCreate: async (newUserData) => {
-           newUserData.password = await bcrypt.hash(newUserData.password, 10);
-           //PJM Adding lowercasing of username
-           newUserData.username = await newUserData.username.toLowerCase();
-           return newUserData;
+            newUserData.password = await bcrypt.hash(newUserData.password, 10);
+            //PJM Adding lowercasing of username
+            newUserData.username = await newUserData.username.toLowerCase();
+            return newUserData;
          },
          // PJM Adding lowercasing of username
          beforeUpdate: async (updatedUserData) => {
-            updatedUserData.username = await updatedUserData.username.toLowerCase();
+            if (updatedUserData.username) {
+               updatedUserData.username = await updatedUserData.username.toLowerCase();
+            }
+            if (updatedUserData.password) {
+               updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+            }
             return updatedUserData;
-          },
-       },
+         },
+      },
       sequelize,
       freezeTableName: true,
       underscored: true,

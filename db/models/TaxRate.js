@@ -9,7 +9,6 @@ TaxRate.init(
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: false,
       validate: {
          len: [2],
       },

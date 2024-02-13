@@ -1,33 +1,44 @@
 const router = require('express').Router();
+const { Artist, Venue, PerformanceDates, TicketPrices, Purchases, Customer } = require('../../../db/models');
+const { Op } = require("sequelize");
 const sequelize = require('../../config/connection');
 
-router.get('/purchases', async (req, res) => {
+router.get('/:id', async (req, res) => {
    try {
+      console.log("Hey, it's the purchases page!");
       // Get list of all concert tickets that logged in user has purchased
-      // Will need to search by cust_tickets.cust_id
-      // This query needs work
-      const purchasesList = await CustTicket.findAll({
-         include: [
-            {
-               model: Performance,
-               attributes: ['artist', 'city', 'date'],
-            },
-            {
-               model: Ticketprices,
-               attributes: ['seat_grade_name']
-            }
-         ]
+      const customerData = await Customer.findByPk(req.params.id, {
+         include: [{
+            model: Purchases,
+            include: [
+               { model: TicketPrices },
+               {
+                  model: PerformanceDates,
+                  include: [{ model: Artist }, { model: Venue }]
+               }
+            ]
+         }],
       });
+      /*  The above sequelize query in simple SQL
+      USE wizard_db;            
+        SELECT PD.event_date, A.artist_name, V.venue_name, TP.seat_grade_desc, P.seat_count
+        FROM performancedates PD
+        INNER JOIN artist A ON PD.artist_id = A.artist_id
+        INNER JOIN purchases P ON PD.perf_date_id = P.perf_id
+        INNER JOIN venue V ON PD.venue_id = V.venue_id
+        INNER JOIN ticketprices TP ON P.seat_grade = TP.seat_grade
+        INNER JOIN customer C on P.cust_id = C.cust_id
+        WHERE P.cust_id = ?;
+      */
 
-      const purchases = purchasesList.map((purchase) => purchase.get({ plain: true }));
+      const customer = customerData.get({ plain: true })
 
-      //These are here just for confirmation data is coming through
-      console.log("First purchase id is: " + performance[0].id);
-      console.log("First purchase seat_grade is: " + performance[0].seat_grade);
-
-      res.render('showpurchases', { purchases });
+      res.render('showpurchases', { customer });
 
    } catch (err) {
+      console.log("Query failed");
       res.status(500).json(err);
    }
 });
+
+module.exports = router;
