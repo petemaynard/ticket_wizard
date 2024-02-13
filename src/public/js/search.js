@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchForm = document.getElementById("search-form");
+  // if (document.location.search) {
+  //   const mainSearch = (document.location.search).slice(13);
+  //   performSearch(mainSearch);
+  // }
 
   searchForm.addEventListener("submit", function (event) {
     console.log("Search submitted.");
@@ -10,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function performSearch(searchTerm) {
-  fetch(`/api/concert/search?searchQuery=${encodeURIComponent(searchTerm)}`)
+  fetch(`/api/concerts?searchQuery=${encodeURIComponent(searchTerm)}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -33,8 +37,8 @@ function updateSearchResults(data) {
     <table class="ui celled table">
       <thead>
         <tr>
+          <th>Event Date</th>
           <th>Artist Name</th>
-          <th>Description</th>
           <th>Venue Name</th>
           <th>City</th>
         </tr>
@@ -46,27 +50,15 @@ function updateSearchResults(data) {
 
   const tableBody = resultsContainer.querySelector('tbody');
 
-  // Assuming data has 'artists' and 'venues' arrays
-  if (data.artists && data.artists.length > 0) {
-    data.artists.forEach((artist) => {
+  // 
+  if (data.length > 0) {
+    data.forEach((event) => {
       const row = tableBody.insertRow();
       row.innerHTML = `
-        <td>${artist.artist_name}</td>
-        <td>${artist.description}</td>
-        <td></td> <!-- Venue Name Placeholder -->
-        <td></td> <!-- City Placeholder -->
-      `;
-    });
-  }
-
-  if (data.venues && data.venues.length > 0) {
-    data.venues.forEach((venue) => {
-      const row = tableBody.insertRow();
-      row.innerHTML = `
-        <td></td> <!-- Artist Name Placeholder -->
-        <td></td> <!-- Description Placeholder -->
-        <td>${venue.venue_name}</td>
-        <td>${venue.city}</td>
+        <td>${event.event_date}</td>
+        <td>${event.artist.artist_name}</td>
+        <td>${event.venue.venue_name}</td>
+        <td>${event.venue.city}</td>
       `;
     });
   }
