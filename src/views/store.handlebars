@@ -1,5 +1,26 @@
-<divclass="container-fluid d-flex">
-
-    
-
+<h3 class="card-title py-2 dm-sans-header">Store</h3>
+<div class="row border">
+    <div class="col">
+        <h3>{band name}</h3>
+        <table class="table dm-sans-body">
+               <thead>
+                  <tr>
+                     <th scope="col">Seat Grade</th>
+                     <th scope="col">Seat Price</th>
+                     <th scope="col">Number of Tickets</th>
+                  </tr>
+               </thead>
+               {{#each finalPrice as |finalPrice| }}
+               <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{finalPrice.seat_grade}}</td>
+                    <td>{{finalPrice.seat_base_price}}</td>
+                    <input type="number" id="numOfTickets" name="quantity" min="0" max="10">
+                </tr>
+               </tbody>
+               {{/each}}
+            </table>
+            <button type="submit">Review Order</button>
+    </div>
 </div>
