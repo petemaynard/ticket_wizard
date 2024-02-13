@@ -10,7 +10,8 @@ body {
   color: var(--header);
   background-color: var(--primary);
   max-width: 1400px;
-  margin: auto;
+  margin: 0px;
+  padding: 0px;
 }
 
 #title {
@@ -78,7 +79,6 @@ span {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  height: 60vh;
   margin-bottom: 200px;
 }
 .centered-form {
@@ -124,8 +124,7 @@ span {
   color: rgb(255, 255, 255); /* Change this color as needed */
 }
 
-footer{
-  margin-top: 60px;
+footer {
 }
 
 @media (max-width: 600px) {
