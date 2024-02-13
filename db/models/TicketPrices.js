@@ -6,10 +6,12 @@ class TicketPrices extends Model {}
 TicketPrices.init(
   {
     seat_grade: {
-      type: DataTypes.CHAR(1),
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: false,
+      validate: {
+         len: [1, 1], // Enforce length constraint
+       },
     },
     seat_grade_desc: {
       type: DataTypes.STRING,

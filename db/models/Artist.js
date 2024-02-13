@@ -16,10 +16,14 @@ Artist.init(
          allowNull: false,
       },
       popularity_index: {
-         type: DataTypes.DECIMAL(2,1),
+         type: DataTypes.DECIMAL,
+         precision: 3,
+         scale: 1,
+         allowNull: false,
       },
       description: {
          type: DataTypes.TEXT,
+         allowNull: false,
       },
    },
    {

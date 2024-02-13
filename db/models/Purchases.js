@@ -17,6 +17,7 @@ Purchases.init(
          references: {
             model: 'customer',
             key: 'cust_id'
+            // hasMany set up in index.js
          }
       },
       perf_id: {
@@ -25,6 +26,7 @@ Purchases.init(
          references: {
             model: 'performanceDates',
             key: 'perf_date_id'
+            // hasMany set up in index.js
          }
       },
       seat_grade: {
@@ -33,6 +35,7 @@ Purchases.init(
          references: {
             model: 'ticketPrices',
             key: 'seat_grade'
+            // hasMany set up in index.js
          }
       },
       seat_count: {
@@ -41,7 +44,7 @@ Purchases.init(
       purchased: {
          type: DataTypes.BOOLEAN,
          allowNull: false,
-         default: 0,
+         default: false,
       }
    },
    {
