@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchForm = document.getElementById("search-form");
-  // if (document.location.search) {
-  //   const mainSearch = (document.location.search).slice(13);
-  //   performSearch(mainSearch);
-  // }
+  const urlParams = new URLSearchParams(window.location.search);
+  const mainSearch = urlParams.get('searchQuery'); // Use 'searchQuery' or the parameter name you're using
+
+  if (mainSearch) {
+    performSearch(mainSearch);
+  }
 
   searchForm.addEventListener("submit", function (event) {
     console.log("Search submitted.");
