@@ -33,6 +33,7 @@ TicketPrices.hasMany(Purchases, {
 Purchases.belongsTo(TicketPrices, {
    foreignKey: 'seat_grade',
 });
+// Do I have this one reverses?
 
 
 // A venue can have many performances, but a performance is held at one venue
