@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     try {
         Purchases.create({
             cust_id: session.user_id,
-            perf_id: searchObject.perf_id,
+            perf_id: searchObject.perf_date_id,
             seat_grade: seatGrade,
             seat_count: input_field.value
         });
