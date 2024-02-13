@@ -124,10 +124,19 @@ span {
   color: rgb(255, 255, 255); /* Change this color as needed */
 }
 
+footer{
+  margin-top: 60px;
+}
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .mobileMain{
+    height: 700px
+  }
   #title {
     font-size: 250%;
+  }
+  .stateZip{
+    display: block;
   }
   .dm-sans-header {
     font-size: 110%;
@@ -140,7 +149,22 @@ span {
 }
 
 @media (max-width: 400px) {
+  .mobileMain{
+    height: 950px
+  }
   #title {
     font-size: 220%;
+  }
+  .mobileLogin{
+    width: 100%;
+  }
+  .mobileCreate{
+    width:100%
+  }
+  .ui.container {
+    display: block;
+  } 
+  .stateZip{
+    display: block;
   }
 }
