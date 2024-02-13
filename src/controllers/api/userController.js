@@ -1,5 +1,33 @@
 const router = require("express").Router();
-const { Customer } = require("../../../db/models");
+const { Op } = require("sequelize");
+const { Artist, Venue, PerformanceDates, TicketPrices, Customer, Purchases } = require("../../../db/models");
+
+router.get("/:id", async (req, res) => {
+  try {
+    const payload = await Customer.findAll({
+      where: {
+            cust_id: {
+              [Op.eq]: req.params.id,
+            },
+          },
+      include: [{ model: Purchases,
+      include: [{model: TicketPrices}, {model: PerformanceDates, 
+      include: [{model: Artist}, {model: Venue}]}]}],
+    });
+
+    if (!payload) {
+      res
+        .status(404)
+        .json({ message: "No events found with that search criteria" });
+      return;
+    }
+
+    res.status(200).json(payload);
+  } catch (err) {
+    console.error("Search error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // from moduel 14 lesson 23 controllers/api/userRoutes
 // CREATE new user
