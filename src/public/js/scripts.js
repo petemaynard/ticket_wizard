@@ -19,3 +19,10 @@ const displayData = (data) => {
         container.appendChild(itemElement);      
     });
 };
+
+document.querySelector('#review').addEventListener('click', loadReviewPage)
+
+const loadReviewPage = async () => {
+    
+    document.location.replace('/reviewOrder')
+}
