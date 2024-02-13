@@ -3,13 +3,13 @@
   <div class="col flex-grow-1 p-2 m-2">
 
     <h3 class="card-title py-2 dm-sans-header">Search for tickets</h3>
-    <div class="row mb-4 border py-3">
+    <form class="row mb-4 border py-3" id="search-form">
       <div class="col">
         <input
           type="text"
-          id="mainSearch"
+          id="search-query"
           class="form-control"
-          placeholder="Enter artist or city"
+          placeholder="Enter artist, venue, or city"
         />
       </div>
       <div class="col">
@@ -18,7 +18,7 @@
           class="btn btn-contrast hammersmith-one-regular"
         >Search</button>
       </div>
-    </div>
+    </form>
 
     <h3 class="card-title py-2 dm-sans-header">Featured Artist</h3>
     <div class="row border mb-5">
@@ -72,7 +72,7 @@
     <aside class="col-auto d-none d-md-block border p-2 mt-2 ms-2 dm-sans-body">
       <form class="p-2 login-form">
         <div class="mb-3">
-          <label for="enterUsername" class="form-label"><strong
+          <label for="username-login" class="form-label"><strong
             >Username</strong></label>
           <input
             type="text"
@@ -82,7 +82,7 @@
           />
         </div>
         <div class="mb-3">
-          <label for="enterPassword" class="form-label"><strong
+          <label for="password-login" class="form-label"><strong
             >Password</strong></label>
           <input
             type="password"
@@ -102,5 +102,7 @@
       </form>
     </aside>
   {{/unless}}
-
 </div>
+
+<script src="/js/login.js"></script>
+<script src="/js/mainsearch.js"></script>
