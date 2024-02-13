@@ -34,7 +34,6 @@ function performSearch(searchTerm) {
 
 function updateSearchResults(data) {
   const resultsContainer = document.getElementById("results-container");
-  // Clear previous results and set up a new table structure
   resultsContainer.innerHTML = `
     <table class="ui celled table">
       <thead>
@@ -43,6 +42,7 @@ function updateSearchResults(data) {
           <th>Artist Name</th>
           <th>Venue Name</th>
           <th>City</th>
+          <th>Order</th>
         </tr>
       </thead>
       <tbody>
@@ -52,7 +52,6 @@ function updateSearchResults(data) {
 
   const tableBody = resultsContainer.querySelector('tbody');
 
-  // 
   if (data.length > 0) {
     data.forEach((event) => {
       const row = tableBody.insertRow();
@@ -61,9 +60,19 @@ function updateSearchResults(data) {
         <td>${event.artist.artist_name}</td>
         <td>${event.venue.venue_name}</td>
         <td>${event.venue.city}</td>
+        <td><button class="order-btn" data-id="${event.perf_date_id}">Order</button></td>
       `;
     });
   }
+
+  // Add click event listener to each order button
+  document.querySelectorAll('.order-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const perfDateId = this.getAttribute('data-id');
+      // Adjust the URL to match your existing route for fetching a concert by ID
+      window.location.href = `/api/concerts/${perfDateId}`;
+    });
+  });
 }
 
 function createResultElement(item, type) {
