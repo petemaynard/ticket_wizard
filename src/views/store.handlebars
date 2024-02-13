@@ -1,0 +1,27 @@
+<h3 class="card-title py-2 dm-sans-header">Store</h3>
+<div class="row border">
+    <div class="col">
+        <h3>{{band.artist_name}}</h3>
+        <table class="table dm-sans-body">
+            <thead>
+                <tr>
+                    <th scope="col">Seat Grade</th>
+                    <th scope="col">Seat Price</th>
+                    <th scope="col">Number of Tickets</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each finalPrice as |finalPrice| }}
+                <tr>
+                    <th scope="row">{{finalPrice.seat_grade}}</th>
+                    <td>{{finalPrice.seat_base_price}}</td>
+                    <td>
+                        <input type="number" id="numOfTickets" name="quantity" min="0" max="10">
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>    
+        </table>
+        <button type="submit" id="review">Review Order</button>
+    </div>
+</div>

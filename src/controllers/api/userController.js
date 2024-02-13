@@ -15,6 +15,8 @@ router.get("/:id", async (req, res) => {
       include: [{model: Artist}, {model: Venue}]}]}],
     });
 
+      // console.log("Artist is : " + payload.Artist[0].artist_name);
+
     if (!payload) {
       res
         .status(404)

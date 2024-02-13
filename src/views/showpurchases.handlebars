@@ -13,15 +13,15 @@
                      <th scope="col">Seats Purchased</th>
                   </tr>
                </thead>
-               {{#each purchase as |purchase| }}
+               {{#each customer.purchases as |purchase| }}
                <tbody>
                   <tr>
                      <th scope="row"></th>
-                     <td>{{purchase.performance.date}}</td>
-                     <td>{{purchase.performance.artist}}</td>
-                     <td>{{purchase.performance.city}}</td>
-                     <td>{{purchase.ticketprices.seat_grade_name}}</td>
-                     <td>{{purchase.ticketprices.seat_count}}</td>
+                     <td>{{purchase.performanceDate.event_date}}</td>
+                     <td>{{purchase.performanceDate.artist.artist_name}}</td>
+                     <td>{{purchase.performanceDate.venue.city}}</td>
+                     <td>{{purchase.ticketPrice.seat_grade_desc}}</td>
+                     <td>{{purchase.seat_count}}</td>
                   </tr>
                </tbody>
                {{/each}}
