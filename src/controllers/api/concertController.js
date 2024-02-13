@@ -15,17 +15,17 @@ router.get("/", async (req, res) => {
       where: {
         [Op.or]: [
           {
-            "$Artist.artist_name$": {
+            "$artist.artist_name$": {
               [Op.like]: `%${searchQuery}%`,
             },
           },
           {
-            "$Venue.venue_name$": {
+            "$venue.venue_name$": {
               [Op.like]: `%${searchQuery}%`,
             },
           },
           {
-            "$Venue.city$": {
+            "$venue.city$": {
               [Op.like]: `%${searchQuery}%`,
             },
           },
