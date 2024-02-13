@@ -1,31 +1,32 @@
 const router = require('express').Router();
-const { TicketPrices } = require('../../../db/models');
-const { Performance } = require('../../../db/models');
+const { Artist, Venue, PerformanceDates, TicketPrices, TaxRate } = require('../../../db/models');
+// const search = searchObject;
+
 
 // router.get('/store', async (req, res) => {
+//     console.log('The store page route');
 //     try {
-//         const ticketData = await TicketPrices.findAll();
-//         const multiplier = await Performance.findAll({ include: { band_name: } && { date: }});
-//         const ticketCost = ticketData.map(seat_base_price => seat_base_price * multiplier)
-
-//         res.json(ticketCost);
-
-//     } catch (err) {
-//         res.status(400).json(err);
-//     };
+//         const basePrice = await TicketPrices.findAll();
+//         const band = await Artist.findAll({ where: {artist_name: searchObject.artist_name }});
+//         const finalPrice = basePrice.map((item) => {
+//             return item.seat_base_price * band.popularity_index
+//         });
+//         res.render('store', {finalPrice}, {band});
+//     } catch (error) {
+//         console.log("Query failed");
+//         res.status(500).json(err);
+//     }
 // });
 
-// router.get('/checkout', async (req, res) => {
+// router.get('/reviewOrder', async (req, res) => {
+//     console.log('review order route');
 //     try {
-//         const ticketData = await TicketPrices.findAll();
-//         const multiplier = await Performance.findAll();
-//         const ticketCost = ticketData.map(seat_base_price => seat_base_price * multiplier)
 
-//         res.json(multiplier, ticketCost);
-
-//     } catch (err) {
-//         res.status(400).json(err);
-//     };
-// });
+//         res.render('review_order', {})
+//     } catch (error) {
+//         console.log("Query failed");
+//         res.status(500).json(err);
+//     }
+// })
 
 module.exports = router;
