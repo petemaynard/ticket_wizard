@@ -3,23 +3,14 @@ const router = express.Router();
 const { Op } = require("sequelize");
 const { Artist, Venue, PerformanceDates } = require("../../../db/models");
 
-// GET all concerts
-// router.get("/", async (req, res) => {
-//   try {
-//     const payload = await PerformanceDates.findAll({
-//       include: [{ model: Artist }, { model: Venue }],
-//     });
-//     res.json(payload);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
 
-
+// GET all concerts based on search value, comparing against artist_name, venue_name, and venue city fields
 router.get("/", async (req, res) => {
   const searchQuery = req.query.searchQuery;
+   console.log("searchQuery is : " + req.query);
   try {
     // Search based on entered value
+
     const searchResults = await PerformanceDates.findAll({
       where: {
         [Op.or]: [
@@ -56,6 +47,20 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+// GET all concerts
+// router.get("/", async (req, res) => {
+//   try {
+//     const payload = await PerformanceDates.findAll({
+//       include: [{ model: Artist }, { model: Venue }],
+//     });
+//     res.json(payload);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// });
+
 // GET a single concert
 router.get("/:id", async (req, res) => {
   try {
@@ -120,7 +125,6 @@ router.get("/venue/:id", async (req, res) => {
   }
 });
 
-// GET all concerts based on search value, comparing against artist_name, venue_name, and venue city fields
 
 
 // router.get('/search', async (req, res) => {
