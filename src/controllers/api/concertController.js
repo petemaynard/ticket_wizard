@@ -15,6 +15,47 @@ const { Artist, Venue, PerformanceDates } = require("../../../db/models");
 //   }
 // });
 
+
+router.get("/", async (req, res) => {
+  const searchQuery = req.query.searchQuery;
+  try {
+    // Search based on entered value
+    const searchResults = await PerformanceDates.findAll({
+      where: {
+        [Op.or]: [
+          {
+            "$Artist.artist_name$": {
+              [Op.like]: `%${searchQuery}%`,
+            },
+          },
+          {
+            "$Venue.venue_name$": {
+              [Op.like]: `%${searchQuery}%`,
+            },
+          },
+          {
+            "$Venue.city$": {
+              [Op.like]: `%${searchQuery}%`,
+            },
+          },
+        ],
+      },
+      include: [{ model: Artist }, { model: Venue }],
+    });
+
+    if (!searchResults) {
+      res
+        .status(404)
+        .json({ message: "No events found with that search criteria" });
+      return;
+    }
+
+    res.status(200).json(searchResults);
+  } catch (err) {
+    console.error("Search error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 // GET a single concert
 router.get("/:id", async (req, res) => {
   try {
@@ -80,46 +121,7 @@ router.get("/venue/:id", async (req, res) => {
 });
 
 // GET all concerts based on search value, comparing against artist_name, venue_name, and venue city fields
-router.get("/", async (req, res) => {
-  const searchQuery = req.query.searchQuery;
-  try {
-    // Search based on entered value
-    const searchResults = await PerformanceDates.findAll({
-      where: {
-        [Op.or]: [
-          {
-            "$Artist.artist_name$": {
-              [Op.like]: `%${searchQuery}%`,
-            },
-          },
-          {
-            "$Venue.venue_name$": {
-              [Op.like]: `%${searchQuery}%`,
-            },
-          },
-          {
-            "$Venue.city$": {
-              [Op.like]: `%${searchQuery}%`,
-            },
-          },
-        ],
-      },
-      include: [{ model: Artist }, { model: Venue }],
-    });
 
-    if (!searchResults) {
-      res
-        .status(404)
-        .json({ message: "No events found with that search criteria" });
-      return;
-    }
-
-    res.status(200).json(searchResults);
-  } catch (err) {
-    console.error("Search error:", err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
 
 // router.get('/search', async (req, res) => {
 //     const searchQuery = req.query.searchQuery;
