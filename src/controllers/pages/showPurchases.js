@@ -3,22 +3,33 @@ const { Artist, Venue, PerformanceDates, TicketPrices, Purchases, Customer } = r
 const { Op } = require("sequelize");
 const sequelize = require('../../config/connection');
 
-router.get('/:id', async (req, res) => {
-   try {
-      console.log("Hey, it's the purchases page!");
-      // Get list of all concert tickets that logged in user has purchased
-      const customerData = await Customer.findByPk(req.params.id, {
-         include: [{
-            model: Purchases,
-            include: [
-               { model: TicketPrices },
-               {
-                  model: PerformanceDates,
-                  include: [{ model: Artist }, { model: Venue }]
-               }
-            ]
-         }],
-      });
+router.get("/", async (req, res) => {
+  try {
+   const loggedInCustId = req.session.user_id;
+
+   const customerData = await Customer.findByPk(loggedInCustId, {
+      include: [{
+         model: Purchases,
+         include: [
+            { model: TicketPrices },
+            {
+               model: PerformanceDates,
+               include: [{ model: Artist }, { model: Venue }]
+            }
+         ]
+      }],
+   });
+
+   const customer = customerData.get({ plain: true })
+
+   res.render('showpurchases', { customer, logged_in: req.session.logged_in});
+
+  } catch (err) {
+    console.log("Query failed");
+    res.status(500).json(err);
+  }
+});
+
       /*  The above sequelize query in simple SQL
       USE wizard_db;            
         SELECT PD.event_date, A.artist_name, V.venue_name, TP.seat_grade_desc, P.seat_count
@@ -31,14 +42,5 @@ router.get('/:id', async (req, res) => {
         WHERE P.cust_id = ?;
       */
 
-      const customer = customerData.get({ plain: true })
-
-      res.render('showpurchases', { customer });
-
-   } catch (err) {
-      console.log("Query failed");
-      res.status(500).json(err);
-   }
-});
 
 module.exports = router;

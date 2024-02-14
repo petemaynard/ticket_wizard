@@ -15,8 +15,6 @@ router.get("/:id", async (req, res) => {
       include: [{model: Artist}, {model: Venue}]}]}],
     });
 
-      // console.log("Artist is : " + payload.Artist[0].artist_name);
-
     if (!payload) {
       res
         .status(404)
@@ -31,7 +29,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// from moduel 14 lesson 23 controllers/api/userRoutes
+// from module 14 lesson 23 controllers/api/userRoutes
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -48,8 +46,9 @@ router.post("/", async (req, res) => {
     });
 
     req.session.save(() => {
+      req.session.user_id = userData.cust_id;
       req.session.logged_in = true;
-      console.log("CONSOLE LOG: " + req.session.logged_in);
+
 
       res.status(200).json(userData);
     });
@@ -82,7 +81,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = userData.cust_id;
       req.session.logged_in = true;
 
       res.json({ user: userData, message: "You are now logged in!" });
@@ -96,6 +95,7 @@ router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
+      console.log("You are now logged out!");
     });
   } else {
     res.status(404).end();

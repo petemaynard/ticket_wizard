@@ -3,7 +3,7 @@
   <div class="col flex-grow-1 p-2 m-2">
 
     <h3 class="card-title py-2 dm-sans-header">Search for tickets</h3>
-    <form class="row mb-4 border py-3" id="search-form" action="/search">
+    <form class="row mb-4 border py-3" id="search-form">
       <div class="col">
         <input
           type="text"
@@ -24,7 +24,7 @@
     <div class="row border mb-5">
       <div class="col-md-4 text-center">
         <img
-          src="/images/featured-artist-placeholder.jpg"
+          src="/images/{{picNumber}}"
           class="img-fluid rounded-start p-1 pt-3 py-md-3"
           alt="featured artist"
         />
@@ -32,10 +32,11 @@
       <div class="col-md-8">
 
         <div class="mt-3">
-          <h4 class="mb-3 pt-2 dm-sans-header">Electric Dream Machine</h4>
-          <p class="py-2 mb-3 dm-sans-body">Get ready to experience sonic magic
+          <h4 class="mb-3 pt-2 dm-sans-header"><strong>{{featuredBandArtist}}</strong></h4>
+          <p class="py-2 mb-3 dm-sans-body">{{featuredBandArtistDesc}}</p>
+          {{!-- <p class="py-2 mb-3 dm-sans-body">Get ready to experience sonic magic
             when you see this sultry glam rock band formed by Philadelphia bar
-            owners Charlie Kelly and Dennis Reynolds.</p>
+            owners Charlie Kelly and Dennis Reynolds.</p> --}}
         </div>
       </div>
     </div>
@@ -53,26 +54,28 @@
               <th scope="col">City</th>
             </tr>
           </thead>
-          {{#each fiveEventsSerial as |fNE|}}
-            <tbody>
+          <tbody>
+            {{#each fiveEventsSerial as |fNE|}}
+            
               <tr>
                 <th scope="row"></th>
                 <td>{{event_date}}</td>
                 <td>{{artist.artist_name}}</td>
                 <td>{{venue.city}}</td>
               </tr>
-            </tbody>
+            
           {{/each}}
+          </tbody>
         </table>
       </div>
     </div>
 
   </div>
   {{#unless logged_in}}
-    <aside class="col-auto d-none d-md-block border p-2 mt-2 ms-2 dm-sans-body">
+    <aside class="col-auto d-none d-md-block border p-2 my-2 ms-2 dm-sans-body">
       <form class="p-2 login-form">
         <div class="mb-3">
-          <label for="username-login" class="form-label"><strong
+          <label for="username-login" class="d-flex form-label p-1 ps-2 rounded-top"><strong
             >Username</strong></label>
           <input
             type="text"
@@ -82,7 +85,7 @@
           />
         </div>
         <div class="mb-3">
-          <label for="password-login" class="form-label"><strong
+          <label for="password-login" class="d-flex form-label p-1 ps-2 rounded-top"><strong
             >Password</strong></label>
           <input
             type="password"
