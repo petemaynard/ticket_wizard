@@ -20,9 +20,20 @@ const displayData = (data) => {
     });
 };
 
-document.querySelector('#review').addEventListener('click', loadReviewPage)
+document.querySelector('#review').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/store', {
+            method: 'POST',
+        });
 
-const loadReviewPage = async () => {
-    
-    document.location.replace('/reviewOrder')
-}
+        if(!response.ok) {
+            throw new Error('failed to call store POST route');
+        }
+
+        const data = await response.json();
+        console.log('Response: ', data);
+        window.location.href = `/reviewOrder`
+    } catch (err) {
+        console.error(err)
+    };
+});
