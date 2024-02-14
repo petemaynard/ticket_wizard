@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ticket Wizard!</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+</head>
     <link
       rel="stylesheet"
       type="text/css"
@@ -25,7 +27,7 @@
 
   <body>
     <nav
-      class="d-flex flex-row justify-content-between align-items-center border-bottom border-2 mx-2"
+      class="d-flex flex-row justify-content-between align-items-center mx-2"
     >
       <div
         class="col-6 ps-2 pt-3 pb-2 my-3 hammersmith-one-regular text-nowrap"
@@ -58,7 +60,7 @@
 
         {{#if logged_in}}
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/user" id="menuLogin">View
+            <li><a class="dropdown-item" href="/purchases" id="menuLogin">View
                 Account</a></li>
             <li><a class="dropdown-item" href="#" id="logout">Logout</a></li>
           </ul>
@@ -67,7 +69,7 @@
 
       {{#if logged_in}}
         <div class="d-none d-md-block p-3">
-          <button class="btn btn-light me-3" id="viewAcct">View Account</button>
+          <a href="/purchases"><button class="btn btn-light me-3" id="viewAcct">View Account</button></a>
           <button class="btn btn-light" id="logout">Logout</button>
         </div>
       {{/if}}

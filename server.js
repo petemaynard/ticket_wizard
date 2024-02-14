@@ -27,9 +27,6 @@ const sess = {
 
 app.use(session(sess));
 
-const concertRoutes = require('./src/controllers/api/concertController'); 
-app.use('/api/concert', concertRoutes);
-
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, './src/views'));
