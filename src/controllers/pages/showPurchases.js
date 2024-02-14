@@ -32,7 +32,6 @@ router.get("/", async (req, res) => {
 
 router.get('/:id', async (req, res) => {
    try {
-      console.log("Hey, it's the purchases page!");
       // Get list of all concert tickets that logged in user has purchased
       const customerData = await Customer.findByPk(req.params.id, {
          include: [{
@@ -60,7 +59,8 @@ router.get('/:id', async (req, res) => {
 
       const customer = customerData.get({ plain: true })
 
-      res.render('showpurchases', { customer });
+      res.render('showpurchases', { customer,
+         logged_in: req.session.logged_in, });
 
    } catch (err) {
       console.log("Query failed");

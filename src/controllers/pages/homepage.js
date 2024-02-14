@@ -24,9 +24,19 @@ router.get("/", async (req, res) => {
       event.get({ plain: true })
     );
 
+    // Select a random picture for the featured artist
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+    const picNumber = "pic"+randomNumber+".jpg";
+    console.log("picNumber is : " + picNumber);
+
+    // Query for a featured band
+    const featuredBand = await Artist.findByPk(randomNumber);
+    const featuredBandArtist = featuredBand.artist_name;
+    const featuredBandArtistDesc = featuredBand.description;
+
     //    // Time to create the homepage handlebars page
     res.render("homepage", {
-      fiveEventsSerial,
+      fiveEventsSerial, picNumber, featuredBandArtist, featuredBandArtistDesc,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
