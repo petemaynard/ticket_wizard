@@ -35,7 +35,7 @@ function performSearch(searchTerm) {
 function updateSearchResults(data) {
   const resultsContainer = document.getElementById("results-container");
   resultsContainer.innerHTML = `
-    <table class="ui celled table">
+    <table class="ui unstackable table">
       <thead>
         <tr>
           <th>Event Date</th>
@@ -70,7 +70,7 @@ function updateSearchResults(data) {
     button.addEventListener('click', function() {
       const perfDateId = this.getAttribute('data-id');
       // Adjust the URL to match your existing route for fetching a concert by ID
-      window.location.href = `/api/concerts/${perfDateId}`;
+      window.location.href = `/store?${perfDateId}`;
     });
   });
 }

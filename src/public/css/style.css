@@ -96,7 +96,6 @@ span {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  margin-bottom: 200px;
 }
 .centered-form {
   width: 450px;
@@ -141,6 +140,7 @@ span {
   color: rgb(255, 255, 255); /* Change this color as needed */
 }
 
+
 #results-container {
   background-color: #1a1a1a; /* Dark background for the container */
   color: #ffffff; /* Light text color */
@@ -165,12 +165,17 @@ span {
   background-color:  #d6d6d6; /* Zebra striping for rows */
 }
 
+
 @media (max-width: 600px) {
-  .mobileMain{
-    height: 700px
-  }
   #title {
     font-size: 250%;
+  }
+  .mobileSearchBar{
+    margin: 0px;
+  }
+  .mobileMain{
+    width: 100%;
+    margin: 0px;
   }
   .stateZip{
     display: block;
@@ -186,9 +191,6 @@ span {
 }
 
 @media (max-width: 400px) {
-  .mobileMain{
-    height: 950px
-  }
   #title {
     font-size: 220%;
   }
@@ -203,5 +205,11 @@ span {
   } 
   .stateZip{
     display: block;
+  }
+  .noto-color{
+    font-size: 20px;
+  }
+  .mobileMain{
+    font-size: 18px;
   }
 }
