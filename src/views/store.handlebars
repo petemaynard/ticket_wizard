@@ -1,7 +1,7 @@
 <h3 class="card-title py-2 dm-sans-header">Store</h3>
 <div class="row border">
     <div class="col">
-        <h3>{{band.artist_name}}</h3>
+        {{!-- <h3>{{bandSerial.artist_name}}</h3> --}}
         <table class="table dm-sans-body">
             <thead>
                 <tr>
@@ -11,12 +11,12 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each finalPrice as |finalPrice| }}
+                {{#each seatSerial as |seat| }}
                 <tr>
-                    <th scope="row">{{finalPrice.seat_grade}}</th>
-                    <td>{{finalPrice.seat_base_price}}</td>
+                    <th scope="row">{{seat.seat}}</th>
+                    <td>{{seat.price}}</td>
                     <td>
-                        <input type="number" id="numOfTickets" name="quantity" min="0" max="10">
+                        <input type="number" class="numOfTickets" name="quantity" min="0" max="10">
                     </td>
                 </tr>
                 {{/each}}

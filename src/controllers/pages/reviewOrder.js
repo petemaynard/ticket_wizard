@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const artist = Artist.findOne({ where: { } })
         res.render('reviewOrder');
-    } catch (error) {
+    } catch (err) {
         console.log("Query failed");
         res.status(500).json(err);
     }
