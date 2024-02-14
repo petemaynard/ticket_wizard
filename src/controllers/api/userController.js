@@ -15,8 +15,6 @@ router.get("/:id", async (req, res) => {
       include: [{model: Artist}, {model: Venue}]}]}],
     });
 
-      // console.log("Artist is : " + payload.Artist[0].artist_name);
-
     if (!payload) {
       res
         .status(404)
@@ -31,7 +29,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// from moduel 14 lesson 23 controllers/api/userRoutes
+// from module 14 lesson 23 controllers/api/userRoutes
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
