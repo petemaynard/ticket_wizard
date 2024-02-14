@@ -3,6 +3,33 @@ const { Artist, Venue, PerformanceDates, TicketPrices, Purchases, Customer } = r
 const { Op } = require("sequelize");
 const sequelize = require('../../config/connection');
 
+router.get("/", async (req, res) => {
+  try {
+   const loggedInCustId = req.session.user_id;
+
+   const customerData = await Customer.findByPk(loggedInCustId, {
+      include: [{
+         model: Purchases,
+         include: [
+            { model: TicketPrices },
+            {
+               model: PerformanceDates,
+               include: [{ model: Artist }, { model: Venue }]
+            }
+         ]
+      }],
+   });
+
+   const customer = customerData.get({ plain: true })
+
+   res.render('showpurchases', { customer });
+
+  } catch (err) {
+    console.log("Query failed");
+    res.status(500).json(err);
+  }
+});
+
 router.get('/:id', async (req, res) => {
    try {
       console.log("Hey, it's the purchases page!");
