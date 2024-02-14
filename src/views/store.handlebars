@@ -1,19 +1,37 @@
 <h3 class="card-title py-2 dm-sans-header">Store</h3>
 <div class="row border">
     <div class="col">
-<<<<<<< HEAD
-
-=======
-        <div><h3>In concert on {{format_date eventDate}}, {{eventArtist}} playing at {{eventVenue}}.</h3><p></p>
-        <p>Select the seats to purchase.</p>
+        <div>
+            <h3>In concert on {{format_date eventDate}}, {{eventArtist}} playing at {{eventVenue}}.</h3>
+            <p></p>
+            <p>Select the seats to purchase.</p>
         </div>
->>>>>>> main
         <table class="table dm-sans-body">
             <thead>
                 <tr>
                     <th scope="col">Seat Grade</th>
                     <th scope="col">Seat Price</th>
-                    <th scope="col">Number of Tickets</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each priceAndSeat as |seat| }}
+                <tr>
+                    <td>
+                        {{this.seat}}
+                    </td>
+                    <td>
+                        {{this.price}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Select Your Seats </th>
+                    <th scope="col"> Number of Tickets</th>
+                    <th scope="col" id="eventPK" class="invisible"> {{concertId}} </th>
                 </tr>
             </thead>
             <tbody>
@@ -26,15 +44,14 @@
                         </select>
                     </td>
                     <td>
-                        <p id="seatPrice"></p>
+                        <input id="numOfTickets"type="number" class="numOfTickets" name="quantity" min="0" max="100">
                     </td>
                     <td>
-                        <input type="number" class="numOfTickets" name="quantity" min="0" max="100">
+                        <button type="submit" id="review">Review Order</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <button type="submit" id="review">Review Order</button>
     </div>
 </div>
 

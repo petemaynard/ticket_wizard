@@ -1,6 +1,7 @@
 const review = document.querySelector('#review');
 const seatChoice = document.querySelector('#seatChoice');
-const seatPrice = document.querySelector('#seatPrice');
+const numOfTickets = document.querySelector('#numOfTickets');
+const eventPK = document.querySelector('#eventPK')
 
 const fetchData = async () => {
     try {
@@ -26,6 +27,10 @@ review.addEventListener('click', async () => {
     try {
         const response = await fetch('/store', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ seatGrade: seatChoice.value, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
         });
 
         if(!response.ok) {
@@ -39,12 +44,3 @@ review.addEventListener('click', async () => {
         console.error(err)
     };
 });
-
-seatChoice.addEventListener('change', function() {
-    const currentSeat = this.id;
-    console.log(currentSeat)
-});
-
-function updateSeatPrice(){
-    seatPrice.textContent = price
-}
