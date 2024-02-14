@@ -24,8 +24,6 @@ router.get('/', async (req, res) => {
        
 
         // This goes within the table: TP.seat_base_price, TP.seat_name_description
-
-
         const concert = await PerformanceDates.findByPk(concertId);
         const basePrice = await TicketPrices.findAll();
         const basePriceSerial = basePrice.map((event) =>
