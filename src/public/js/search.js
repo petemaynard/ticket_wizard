@@ -35,7 +35,7 @@ function performSearch(searchTerm) {
 function updateSearchResults(data) {
   const resultsContainer = document.getElementById("results-container");
   resultsContainer.innerHTML = `
-    <table class="ui celled table">
+    <table class="ui unstackable table">
       <thead>
         <tr>
           <th>Event Date</th>
