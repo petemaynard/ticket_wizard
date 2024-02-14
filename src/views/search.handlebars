@@ -1,4 +1,4 @@
-<div class="ui container mobileSearchBar" style="display: flex; flex-direction: column;">
+<div class="ui container mobileSearchBar align-items-center" style="display: flex; flex-direction: column;">
   <div class="mobileMain ui raised segment form-width centered-form mt-5">
     <h2 class="ui center aligned header">Ticket Wizard Search</h2>
     <form class="mobileMain ui form center aligned medium header search-form" id="search-form">
@@ -6,11 +6,11 @@
         <label>Search for</label>
         <input type="text" id="search-query" name="search-query" placeholder="Artist, City, Venue..." required />
       </div>
-      <button type="submit" class="ui primary button">Search</button>
+      <button type="submit" class="btn btn-contrast hammersmith-one-regular">Search</button>
     </form>
   </div>
   <!-- Results container will now definitely be below the search form -->
-  <div id="results-container" class="ui raised segment form-width centered-form mt-5">
+  <div id="results-container" class="ui raised segment form-width centered-form my-5 dm-sans-body">
     <!-- Search results will be dynamically inserted here by the search.js script -->
   </div>
 </div>
