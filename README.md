@@ -7,11 +7,8 @@ A comprehensive web application designed to streamline the experience of managin
 - [Technical Implementation](#technical-implementation)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
-- [Credits](#credits)
 - [Contact Information](#contact-information)
-- [Project Status](#project-status)
 - [FAQs](#faqs)
 - [Acknowledgments](#acknowledgments)
 
@@ -77,40 +74,45 @@ cd ticket_wizard
 ```bash
 npm install
 ```
-4. Start the application:
+4. Create a `.env` file in the root directory of the project. Populate it with your environment variables such as database credentials. Example:
+```plaintext
+DB_NAME='wizard_db'
+DB_USER='root'
+DB_PASSWORD='password'
+```
+5. login to your MySQL database and enter password:
+```bash
+mysql -u root -p
+```
+6. Create database and drop if already exists
+```bash
+DROP DATABASE IF EXISTS wizard_db;
+CREATE DATABASE wizard_db;
+```
+7. Seed database:
+```bash
+SEEDING LOGIC HERE
+```
+8. Run server locally
 ```bash
 node server.js
 ```
-
 ## Usage
 
 After installation, open your web browser and navigate to `http://localhost:3001` to view the application.
-
-## Contributing
-
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
 
-## Credits
-
-- **HTML & Styling:** The application's frontend utilizes HTML5 and CSS3, with Bootstrap for styling and layout. This ensures a modern and user-friendly interface.
-- **Testing:** Rigorous testing is conducted across different browsers and devices to ensure functionality and responsiveness.
-
 ## Contact Information
 
 For any inquiries or contributions, please contact [your email] or open an issue in the GitHub repository.
 
-## Project Status
-
-This project is currently in development. Future enhancements will include social media integration, a rating system for artists and venues, and personalized concert recommendations based on user preferences.
-
 ## FAQs
 
 Q: How do I reset my password?
-A: You can't. Dont forget your password
+A: You can't. Don't forget your password.
 
 ## Acknowledgments
 
