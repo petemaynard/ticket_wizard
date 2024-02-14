@@ -79,7 +79,6 @@ span {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  margin-bottom: 200px;
 }
 .centered-form {
   width: 450px;
@@ -124,15 +123,15 @@ span {
   color: rgb(255, 255, 255); /* Change this color as needed */
 }
 
-footer {
-}
-
 @media (max-width: 600px) {
-  .mobileMain{
-    height: 700px
-  }
   #title {
     font-size: 250%;
+  }
+  .mobileSearchBar{
+    margin: 0px;
+  }
+  .mobileMain{
+    margin: 0px;
   }
   .stateZip{
     display: block;
@@ -148,9 +147,6 @@ footer {
 }
 
 @media (max-width: 400px) {
-  .mobileMain{
-    height: 950px
-  }
   #title {
     font-size: 220%;
   }
