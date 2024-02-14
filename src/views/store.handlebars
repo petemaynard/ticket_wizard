@@ -1,7 +1,7 @@
 <h3 class="card-title py-2 dm-sans-header">Store</h3>
 <div class="row border">
     <div class="col">
-        <div>{{band}}</div>
+
         <table class="table dm-sans-body">
             <thead>
                 <tr>
@@ -11,16 +11,22 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each priceAndSeat as |seat| }}
                 <tr>
-                    <th scope="row">{{seat.seat}}</th>
-                    <td>${{seat.price}}</td>
                     <td>
-                        <input type="number" class="numOfTickets" name="quantity" min="0" max="100" id={{seat.grade}}>
+                        <select id="seatChoice" name="seat">
+                            {{#each priceAndSeat as |seat| }}
+                            <option value="{{this}}" id="{{this.grade}}">{{this.seat}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        <p id="seatChoice"></p>
+                    </td>
+                    <td>
+                        <input type="number" class="numOfTickets" name="quantity" min="0" max="100">
                     </td>
                 </tr>
-                {{/each}}
-            </tbody>    
+            </tbody>
         </table>
         <button type="submit" id="review">Review Order</button>
     </div>

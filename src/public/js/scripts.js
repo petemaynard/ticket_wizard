@@ -1,4 +1,5 @@
-//this needs to be filled out with specific data and variables
+const review = document.querySelector('#review');
+const seatChoice = document.querySelector('#seatChoice');
 
 const fetchData = async () => {
     try {
@@ -20,7 +21,7 @@ const displayData = (data) => {
     });
 };
 
-document.querySelector('#review').addEventListener('click', async () => {
+review.addEventListener('click', async () => {
     try {
         const response = await fetch('/store', {
             method: 'POST',
@@ -36,4 +37,9 @@ document.querySelector('#review').addEventListener('click', async () => {
     } catch (err) {
         console.error(err)
     };
+});
+
+seatChoice.addEventListener('change', function() {
+    const currentSeat = this.textContent;
+    console.log(currentSeat)
 });
