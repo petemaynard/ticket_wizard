@@ -4,7 +4,7 @@ const performanceDatesData = [
    {perf_date_id: 1, event_date: "2024-03-01", venue_id: 1, artist_id: 1},
    {perf_date_id: 2, event_date: "2024-03-01", venue_id: 2, artist_id: 2},
    {perf_date_id: 3, event_date: "2024-03-01", venue_id: 3, artist_id: 3},
-   {perf_date_id: 4, event_date: "2024-03-01", venue_id: 4, artist_id: 4},
+   {perf_date_id: 4, event_date: "2024-03-01", venue_id: 21, artist_id: 4},
    {perf_date_id: 5, event_date: "2024-03-02", venue_id: 5, artist_id: 5},
    {perf_date_id: 6, event_date: "2024-03-02", venue_id: 6, artist_id: 6},
    {perf_date_id: 7, event_date: "2024-03-02", venue_id: 7, artist_id: 7},

@@ -21,7 +21,7 @@ const venueData = [
    {venue_id: 18, venue_name: "SAP Center", city: "San Jose, CA"},
    {venue_id: 19, venue_name: "Climate Pledge Arena", city: "Seattle, WA"},
    {venue_id: 20, venue_name: "Capital One Arena", city: "Washington, D.C."},
-   {venue_id: 21, venue_name: "Hippodrome Theatre", city: "Baltimore, MA"},
+   {venue_id: 21, venue_name: "Hammerjacks", city: "Baltimore, MA"},
    {venue_id: 22, venue_name: "Target Center", city: "Minneapolis, MN"},
 ];
 
