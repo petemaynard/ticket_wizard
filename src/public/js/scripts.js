@@ -1,5 +1,6 @@
 const review = document.querySelector('#review');
 const seatChoice = document.querySelector('#seatChoice');
+const seatPrice = document.querySelector('#seatPrice');
 
 const fetchData = async () => {
     try {
@@ -40,6 +41,10 @@ review.addEventListener('click', async () => {
 });
 
 seatChoice.addEventListener('change', function() {
-    const currentSeat = this.textContent;
+    const currentSeat = this.id;
     console.log(currentSeat)
 });
+
+function updateSeatPrice(){
+    seatPrice.textContent = price
+}

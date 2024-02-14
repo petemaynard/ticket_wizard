@@ -15,12 +15,12 @@
                     <td>
                         <select id="seatChoice" name="seat">
                             {{#each priceAndSeat as |seat| }}
-                            <option value="{{this}}" id="{{this.grade}}">{{this.seat}}</option>
+                            <option id="{{this.grade}}">{{this.seat}}</option>
                             {{/each}}
                         </select>
                     </td>
                     <td>
-                        <p id="seatChoice"></p>
+                        <p id="seatPrice"></p>
                     </td>
                     <td>
                         <input type="number" class="numOfTickets" name="quantity" min="0" max="100">
