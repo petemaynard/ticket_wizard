@@ -54,9 +54,10 @@ function updateSearchResults(data) {
 
   if (data.length > 0) {
     data.forEach((event) => {
+      const formattedDate = formatDate(event.event_date);
       const row = tableBody.insertRow();
       row.innerHTML = `
-        <td>${event.event_date}</td>
+        <td>${formattedDate}</td>
         <td>${event.artist.artist_name}</td>
         <td>${event.venue.venue_name}</td>
         <td>${event.venue.city}</td>
@@ -96,4 +97,9 @@ function createResultElement(item, type) {
     // This will need to be adjusted based on your application's routing
   });
   return resultElement;
+}
+
+function formatDate(date) {
+  return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${
+    new Date(date).getFullYear()}`;
 }
