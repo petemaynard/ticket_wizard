@@ -80,6 +80,7 @@ aside label {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  font-size: 150%;
 }
 
 .dm-sans-body {
@@ -87,6 +88,7 @@ aside label {
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
+  font-size: 120%;
 }
 
 span {

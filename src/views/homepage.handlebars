@@ -21,7 +21,7 @@
     </form>
 
     <h3 class="card-title py-2 dm-sans-header">Featured Artist</h3>
-    <div class="row border mb-5">
+    <div class="row border mb-5 featured-artist">
       <div class="col-md-4 text-center">
         <img
           src="/images/{{picNumber}}"
@@ -59,7 +59,7 @@
             
               <tr>
                 <th scope="row"></th>
-                <td>{{event_date}}</td>
+                <td>{{format_date event_date}}</td>
                 <td>{{artist.artist_name}}</td>
                 <td>{{venue.city}}</td>
               </tr>
