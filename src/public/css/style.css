@@ -1,7 +1,7 @@
 :root {
   --primary: #0f1735;
   --secondary: gold;
-  --contrast: rgba(38, 223, 252, 0.482);
+  --contrast: #237895;
   --header: aliceblue;
 }
 
@@ -13,6 +13,11 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+nav {
+    border-bottom: 4px solid;
+    border-image: linear-gradient(to right, rgb(172, 112, 218), gold, white, rgba(255, 255, 255, 0.651), rgba(255, 255, 255, 0.192), #0f1735) 1;
+  }
 
 #title {
   font-size: 300%;
@@ -37,13 +42,25 @@ a:hover {
   color: var(--header);
 }
 
-thead {
+.table thead {
   background-color: var(--contrast);
+}
+
+.table tr:nth-child(even) {
+  background-color: rgba(137, 135, 135, 0.189);
 }
 
 h3 {
   text-decoration: underline solid var(--secondary) 18%;
   text-decoration-skip-ink: none;
+}
+
+h4 {
+  color: var(--secondary);
+}
+
+aside label {
+  background-color: var(--contrast);
 }
 
 .noto-color {
@@ -124,7 +141,28 @@ span {
   color: rgb(255, 255, 255); /* Change this color as needed */
 }
 
-footer {
+#results-container {
+  background-color: #1a1a1a; /* Dark background for the container */
+  color: #ffffff; /* Light text color */
+  border-collapse: collapse; /* Collapse borders for table */
+  width: 100%; /* Full width table */
+  margin-top: 20px; /* Spacing above the table */
+}
+
+#results-container th {
+  background-color: var(--contrast); /* Slightly lighter background for headers */
+  color: #ffffff; /* Light text color for headers */
+  padding: 10px; /* Padding inside header cells */
+  text-align: left; /* Align text to the left */
+}
+
+#results-container td {
+  border-top: 1px solid #ffffff; /* White border for the top of each cell */
+  padding: 10px; /* Padding inside cells */
+}
+
+#results-container tr:nth-child(even) {
+  background-color:  #d6d6d6; /* Zebra striping for rows */
 }
 
 @media (max-width: 600px) {
