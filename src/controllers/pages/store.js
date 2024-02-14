@@ -23,13 +23,13 @@ router.get('/', async (req, res) => {
         });
 
         const priceAndSeat = [
-            { seat: basePriceSerial[0].seat_grade_desc, price: finalPrice[0] },
-            { seat: basePriceSerial[1].seat_grade_desc, price: finalPrice[1] },
-            { seat: basePriceSerial[2].seat_grade_desc, price: finalPrice[2] },
-            { seat: basePriceSerial[3].seat_grade_desc, price: finalPrice[3] }
+            { grade: basePriceSerial[0].seat_grade, seat: basePriceSerial[0].seat_grade_desc, price: finalPrice[0] },
+            { grade: basePriceSerial[1].seat_grade, seat: basePriceSerial[1].seat_grade_desc, price: finalPrice[1] },
+            { grade: basePriceSerial[2].seat_grade, seat: basePriceSerial[2].seat_grade_desc, price: finalPrice[2] },
+            { grade: basePriceSerial[3].seat_grade, seat: basePriceSerial[3].seat_grade_desc, price: finalPrice[3] }
         ];
 
-        res.render('store', { priceAndSeat });
+        res.render('store', { priceAndSeat, band });
     } catch (err) {
         console.log("Query failed");
         res.status(500).json(err);
@@ -39,9 +39,11 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     console.log('attempting to post initial Purchase data');
     try {
+        const searchData = req.query;
+        const [concertId, value] = Object.entries(searchData)[0];
         Purchases.create({
-            cust_id: session.user_id,
-            perf_id: searchObject.perf_date_id,
+            cust_id: session.user_id || 0,
+            perf_id: concertId,
             seat_grade: seatGrade,
             seat_count: input_field.value
         });

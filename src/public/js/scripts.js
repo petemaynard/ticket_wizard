@@ -22,7 +22,7 @@ const displayData = (data) => {
 
 document.querySelector('#review').addEventListener('click', async () => {
     try {
-        const response = await fetch('../../controllers/pages/store', {
+        const response = await fetch('/store', {
             method: 'POST',
         });
 
