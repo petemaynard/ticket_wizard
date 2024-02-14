@@ -70,7 +70,7 @@ function updateSearchResults(data) {
     button.addEventListener('click', function() {
       const perfDateId = this.getAttribute('data-id');
       // Adjust the URL to match your existing route for fetching a concert by ID
-      window.location.href = `/api/concerts/${perfDateId}`;
+      window.location.href = `/store?${perfDateId}`;
     });
   });
 }

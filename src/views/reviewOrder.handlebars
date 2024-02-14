@@ -1,0 +1,31 @@
+<h3>Review Order</h3>
+<div class="row border">
+    <div class="col">
+        <table class="table dm-sans-body">
+            <tbody class="flex-box">
+                {{#each order as |order| }}
+                <tr>
+                    <th scope="row">{{order.perf_date}}</th>
+                    <td>{{order.artist_name}}</td>
+                    <td>{{order.city}}</td>
+                    <td>{{seatData}}</td>
+                    <td>{{order.finalPrice}}</td>
+                    <td>
+                        <input type="number" id="numOfTickets" name="quantity" min="0" max="10">
+                    </td>
+                </tr>
+                {{/each}}
+                <tr class="text-right">
+                    <td>tax line</td>
+                </tr>
+                <tr class="text-right">
+                    <td>fees</td>
+                </tr>
+                <tr class="text-right">
+                    <td>total</td>
+                </tr>   
+            </tbody>
+        </table>
+        <button type="submit">Pruchase</button>
+    </div>
+</div>
