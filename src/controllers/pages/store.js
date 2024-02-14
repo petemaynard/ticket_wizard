@@ -12,29 +12,24 @@ router.get('/', async (req, res) => {
         const [concertId, value] = Object.entries(searchData)[0];
         const concert = await PerformanceDates.findByPk(concertId);
         const basePrice = await TicketPrices.findAll();
-        console.log(basePrice);
-        const basePriceSerial = baseprice.map((event))
+        const basePriceSerial = basePrice.map((event) =>
+            event.get({ plain: true })
+        );
+
         const artistId = concert.artist_id;
         const band = await Artist.findByPk(artistId);
         const finalPrice = basePrice.map((item) => {
             return item.seat_base_price * band.popularity_index
         });
-        console.log(finalPrice)
+
         const priceAndSeat = [
-            { seat: basePrice.seatGrade[0], price: finalPrice[0] },
-            { seat: basePrice.seatGrade[1], price: finalPrice[1] },
-            { seat: basePrice.seatGrade[2], price: finalPrice[2] },
-            { seat: basePrice.seatGrade[3], price: finalPrice[3] }
+            { seat: basePriceSerial[0].seat_grade_desc, price: finalPrice[0] },
+            { seat: basePriceSerial[1].seat_grade_desc, price: finalPrice[1] },
+            { seat: basePriceSerial[2].seat_grade_desc, price: finalPrice[2] },
+            { seat: basePriceSerial[3].seat_grade_desc, price: finalPrice[3] }
         ];
-        console.log(priceAndSeat)
-        const seatSerial = priceAndSeat.map((event) =>
-            event.get({ plain: true })
-        );
-        // const bandSerial = band.map((event)=> 
-        //     event.get({ plain: true })
-        // );
-        console.log(finalPriceSerial)
-        res.render('store', { seatSerial, bandSerial });
+
+        res.render('store', { priceAndSeat });
     } catch (err) {
         console.log("Query failed");
         res.status(500).json(err);

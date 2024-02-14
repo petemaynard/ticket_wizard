@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each seatSerial as |seat| }}
+                {{#each priceAndSeat as |seat| }}
                 <tr>
                     <th scope="row">{{seat.seat}}</th>
                     <td>{{seat.price}}</td>
@@ -25,3 +25,5 @@
         <button type="submit" id="review">Review Order</button>
     </div>
 </div>
+
+<script src="./js/scripts.js"
