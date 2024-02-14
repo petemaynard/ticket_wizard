@@ -142,9 +142,8 @@ span {
   color: rgb(255, 255, 255); /* Change this color as needed */
 }
 
-
 #results-container {
-  background-color: #1a1a1a; /* Dark background for the container */
+  background-color: var(--primary); /* Dark background for the container */
   color: #ffffff; /* Light text color */
   border-collapse: collapse; /* Collapse borders for table */
   width: 100%; /* Full width table */
@@ -161,6 +160,7 @@ span {
 #results-container td {
   border-top: 1px solid #ffffff; /* White border for the top of each cell */
   padding: 10px; /* Padding inside cells */
+  font-weight: 400;
 }
 
 #results-container tr:nth-child(even) {
