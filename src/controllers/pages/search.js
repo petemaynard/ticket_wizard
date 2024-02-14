@@ -4,7 +4,7 @@ const db = require('../../../db/models'); // Update with the path to your databa
 
 // GET route for the search page
 router.get('/', (req, res) => {
-  res.render('search');
+  res.render('search', { logged_in: req.session.logged_in });
 });
 
 module.exports = router;

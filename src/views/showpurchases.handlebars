@@ -1,4 +1,6 @@
      <h3 class="card-title py-2 dm-sans-header">Purchased Tickets</h3>
+
+     {{#if logged_in}}
       <div class="row border">
          <div class="col">
 
@@ -27,3 +29,6 @@
                {{/each}}
             </table>
          </div>
+      {{else}}
+      <h3>You must be logged in to see your purchases</h3>
+      {{/if}}
