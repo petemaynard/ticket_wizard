@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
         const perfId = parseInt(perf);
         const numOfTickets = parseInt(tickets);
         const purchase = await Purchases.create({
-            cust_id: 1,
+            cust_id: req.session.user_id,
             perf_id: perfId,
             seat_grade: seatGrade,
             seat_count: numOfTickets,
