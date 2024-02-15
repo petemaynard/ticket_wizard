@@ -20,7 +20,6 @@ router.get("/", async (req, res) => {
       }],
    });
 
-   console.log(customerData.purchases[0].purchased);
    const customer = customerData.get({ plain: true })
 
    res.render('showpurchases', { customer, logged_in: req.session.logged_in});

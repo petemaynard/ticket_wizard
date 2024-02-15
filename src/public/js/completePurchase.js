@@ -1,10 +1,11 @@
 
 const purchaseBtn = document.querySelector(".purchaseBtn");
+const custTixId = purchaseBtn.id;
 
 purchaseBtn.addEventListener("click", async function(event) {
-  const response = await fetch(`/api/tickets/321`, {
+  const response = await fetch(`/api/tickets/${custTixId}`, {
     method: "PUT",
-    body: JSON.stringify({ cust_tix_id: "321", purchased: true }),
+    body: JSON.stringify({ cust_tix_id: custTixId, purchased: true }),
     headers: { "Content-Type": "application/json" },
   });
 

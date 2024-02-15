@@ -51,7 +51,7 @@ review.addEventListener('click', async () => {
 
         const data = await response.json();
         console.log('Response: ', data);
-        window.location.href = `/reviewOrder?${data.data}`
+        window.location.href = `/reviewOrder/${data.data}`
     } catch (err) {
         console.error(err)
     };
