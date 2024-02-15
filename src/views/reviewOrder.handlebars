@@ -11,8 +11,8 @@
               <th>Artist</th>
               <th>City</th>
               <th>Seat Grade</th>
-              <th>Qty</th>
-              <th>Price</th>
+              <th class="text-end">Qty</th>
+              <th class="text-end">Price</th>
             </tr>
           </thead>
           <tr>
@@ -21,32 +21,37 @@
             <td>{{purchase.performanceDate.artist.artist_name}}</td>
             <td>{{purchase.performanceDate.venue.city}}</td>
             <td>{{purchase.ticketPrice.seat_grade_desc}}</td>
-            <td>{{purchase.seat_count}}</td>
-            <td>${{purchase.ticketPrice.seat_base_price}}</td>
+            <td class="text-end">{{purchase.seat_count}}</td>
+            <td class="text-end">${{purchase.ticketPrice.seat_base_price}}</td>
           </tr>
           <tbody class="table-group-divider">
             <tr>
-              <td colspan="5" class="text-end">
-                <table class="table table-borderless">
-                  <tr>
+              <td colspan="8" class="text-end">
+                <tr></tr>
+                <tr>
+                    <td></td><td></td><td></td><td></td><td></td>
                     <td>Sales Tax ({{purchase.customer.state}} resident)</td>
-                    <td></td>
+                    <td class="text-end">{{format_currency taxAmount}}</td>
                   </tr>
                   <tr>
+                    <td></td><td></td><td></td><td></td><td></td>
                     <td>Fees</td>
+                    <td class="text-end">$10</td>
                   </tr>
-                  <tr>
+                  <tr class="h4">
+                    <td></td><td></td><td></td><td></td><td></td>
                     <td>Total</td>
+                    <td class="text-end">{{format_currency totalAmount}}</td>
                   </tr>
-                </table>
+            
               </td>
             </tr>
           </tbody>
         </tbody>
       </table>
-      <button type="submit" class="btn btn-contrast my-2">Purchase</button>
+      <div class="d-flex flex-row justify-content-end">
+      <button type="submit" class="btn btn-contrast my-2 px-3">Purchase</button>
+      </div>
     </div>
   </div>
 </div>
-
-<script src="./js/script.js"></script>

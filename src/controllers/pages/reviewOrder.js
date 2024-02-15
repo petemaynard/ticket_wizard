@@ -48,19 +48,25 @@ router.get('/:cust_tix_id', async (req, res) => {
 
         const customerTaxRate = await TaxRate.findByPk(purchaseData.customer.state);
         
-        // console.log(purchaseData.customer.state);
-        // console.log(customerTaxRate.rate);
+        const taxAmount = calculateTaxes(purchaseData.seat_count, purchaseData.ticketPrice.seat_base_price, customerTaxRate.rate);
+
+        const feeAmount = 10;
+
+        const totalAmount = (purchaseData.ticketPrice.seat_base_price + taxAmount + feeAmount);
         
         const purchase = purchaseData.get({ plain: true });
-        const taxRate = customerTaxRate.get({ plain: true });
 
          console.log(purchase);       
-        res.render('reviewOrder', { purchase, taxRate });
+        res.render('reviewOrder', { purchase, taxAmount, feeAmount, totalAmount });
     } catch (err) {
         console.log("Query failed");
         res.status(500).json(err);
     }
 });
+
+function calculateTaxes(a, b, c) {
+    return a * b * c;
+}
 
 
 module.exports = router;
