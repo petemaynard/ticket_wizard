@@ -2,7 +2,7 @@ const review = document.querySelector('#review');
 const seatChoice = document.querySelector('#seatId');
 const numOfTickets = document.querySelector('#numOfTickets');
 const eventPK = document.querySelector('#eventPK');
-let selectedOption = 'C';
+let selectedOption = 'A';
 
 document.addEventListener('DOMContentLoaded', function() {
     var selectElement = document.getElementById('seatChoice');
@@ -37,7 +37,7 @@ const displayData = (data) => {
 
 review.addEventListener('click', async () => {
     try {
-        console.log('selectedOption is', selectedOption)
+        console.log('1. selectedOption is', selectedOption.id)
         const response = await fetch('/store', {
             method: 'POST',
             headers: {
@@ -45,8 +45,7 @@ review.addEventListener('click', async () => {
             },
             body: JSON.stringify({ seatGrade: selectedOption.id, numOfTickets: numOfTickets.value, perfPK: eventPK.textContent })
         });
-        console.log('selectedOption is', selectedOption)
-        if (response.ok) {
+        if (!response.ok) {
             throw new Error('failed to call store POST route');
         }
 
@@ -57,6 +56,7 @@ review.addEventListener('click', async () => {
         console.error('Error:', err);
         throw err;
     };
+
 });
 
 
