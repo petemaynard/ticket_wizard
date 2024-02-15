@@ -1,6 +1,6 @@
 module.exports = {
   format_date: (date) => {
-    return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${
-      new Date(date).getFullYear()}`;
+    const dateArray = date.split("-");
+    return `${new Number(dateArray[1])}/${new Number(dateArray[2])}/${new Number(dateArray[0])}`;
   },
 };

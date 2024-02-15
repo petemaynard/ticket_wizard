@@ -21,6 +21,7 @@ function performSearch(searchTerm) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
+      console.log(response.json())
       return response.json();
     })
     .then((data) => {
@@ -100,6 +101,6 @@ function createResultElement(item, type) {
 }
 
 function formatDate(date) {
-  return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${
-    new Date(date).getFullYear()}`;
+  const dateArray = date.split("-");
+    return `${new Number(dateArray[1])}/${new Number(dateArray[2])}/${new Number(dateArray[0])}`;
 }
