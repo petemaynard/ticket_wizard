@@ -1,4 +1,7 @@
-//this needs to be filled out with specific data and variables
+const review = document.querySelector('#review');
+const seatChoice = document.querySelector('#seatChoice');
+const numOfTickets = document.querySelector('#numOfTickets');
+const eventPK = document.querySelector('#eventPK')
 
 const fetchData = async () => {
     try {
@@ -20,10 +23,14 @@ const displayData = (data) => {
     });
 };
 
-document.querySelector('#review').addEventListener('click', async () => {
+review.addEventListener('click', async () => {
     try {
         const response = await fetch('/store', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ seatGrade: seatChoice.value, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
         });
 
         if(!response.ok) {

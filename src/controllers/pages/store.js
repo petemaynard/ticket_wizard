@@ -20,20 +20,16 @@ router.get('/', async (req, res) => {
          console.log("Venue is: " + headerData.venue.venue_name);
          const eventDate = headerData.event_date;
          const eventArtist = headerData.artist.artist_name;
-         const eventVenue = headerData.venue.venue_name
-       
+         const eventVenue = headerData.venue.venue_name;
 
         // This goes within the table: TP.seat_base_price, TP.seat_name_description
-        const concert = await PerformanceDates.findByPk(concertId);
         const basePrice = await TicketPrices.findAll();
         const basePriceSerial = basePrice.map((event) =>
             event.get({ plain: true })
         );
 
-        const artistId = concert.artist_id;
-        const band = await Artist.findByPk(artistId);
         const finalPrice = basePrice.map((item) => {
-            return item.seat_base_price * band.popularity_index
+            return item.seat_base_price * headerData.artist.popularity_index
         });
 
         const priceAndSeat = [
@@ -43,7 +39,7 @@ router.get('/', async (req, res) => {
             { grade: basePriceSerial[3].seat_grade, seat: basePriceSerial[3].seat_grade_desc, price: finalPrice[3] }
         ];
 
-        res.render('store', { priceAndSeat, band, eventDate, eventArtist, eventVenue });
+        res.render('store', { priceAndSeat, eventDate, eventArtist, eventVenue, concertId });
     } catch (err) {
         console.log("Query failed");
         res.status(500).json(err);
@@ -53,16 +49,17 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     console.log('attempting to post initial Purchase data');
     try {
-        const searchData = req.query;
-        const [concertId, value] = Object.entries(searchData)[0];
+        const numOfTickets = req.body.numOfTickets;
+        const seatGrade = req.body.seatGrade;
+        const perfId = req.body.eventPk
+        console.log(perfId)
         Purchases.create({
-            cust_id: session.user_id || 0,
-            perf_id: concertId,
+            cust_id: 0,
+            perf_id: perfId,
             seat_grade: seatGrade,
-            seat_count: input_field.value
+            seat_count: numOfTickets
         });
     } catch (err) {
-        console.log("Post failed");
         res.status(500).json(err);
     }
 })
