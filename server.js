@@ -8,6 +8,14 @@ const helpers = require('./src/utils/helpers');
 const sequelize = require('./src/config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+//PJM Added this in the hopes of reducing logging messages by "sess"
+const customLogger = {
+   debug: console.log, // Log debug messages to console
+   info: console.info, // Log info messages to console
+   warn: console.warn, // Log warn messages to console
+   error: console.error // Log error messages to console
+ };
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -21,7 +29,8 @@ const sess = {
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
+    db: sequelize,
+    logFn: customLogger
   }),
 };
 

@@ -41,6 +41,9 @@ Purchases.init(
       seat_count: {
          type: DataTypes.INTEGER,
       },
+      // total_seat_cost: {
+      //    type: DataTypes.INTEGER,
+      // },
       purchased: {
          type: DataTypes.BOOLEAN,
          allowNull: false,

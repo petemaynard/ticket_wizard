@@ -24,13 +24,16 @@ router.get('/', async (req, res) => {
 
         // This goes within the table: TP.seat_base_price, TP.seat_name_description
         const basePrice = await TicketPrices.findAll();
+        console.log("basePrice is : " +basePrice);
         const basePriceSerial = basePrice.map((event) =>
             event.get({ plain: true })
         );
+        console.log("basePriceSerial is : " + basePriceSerial);
 
         const finalPrice = basePrice.map((item) => {
             return item.seat_base_price * headerData.artist.popularity_index
         });
+        console.log("finalPrice is : " + finalPrice);
 
         const priceAndSeat = [
             { grade: basePriceSerial[0].seat_grade, seat: basePriceSerial[0].seat_grade_desc, price: finalPrice[0] },
