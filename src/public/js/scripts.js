@@ -42,7 +42,7 @@ review.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ seatGrade: selectedOption.id, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
+            body: JSON.stringify({ seatGrade: selectedOption.id, numOfTickets: numOfTickets.value, perfPK: eventPK.textContent })
         });
 
         if(!response.ok) {
@@ -51,7 +51,7 @@ review.addEventListener('click', async () => {
 
         const data = await response.json();
         console.log('Response: ', data);
-        window.location.href = `/reviewOrder`
+        window.location.href = `/reviewOrder?${data.data}`
     } catch (err) {
         console.error(err)
     };

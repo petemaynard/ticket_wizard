@@ -54,13 +54,15 @@ router.post('/', async (req, res) => {
         const perf = req.body.perfPK
         const perfId = parseInt(perf);
         const numOfTickets = parseInt(tickets);
-        await Purchases.create({
+        const purchase = await Purchases.create({
             cust_id: 1,
             perf_id: perfId,
             seat_grade: seatGrade,
             seat_count: numOfTickets,
             purchased: false
         });
+
+        res.status(200).json({ message: 'ok', data: purchase.cust_tix_id });
     } catch (err) {
         res.status(500).json(err);
     }
