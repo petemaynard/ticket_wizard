@@ -1,5 +1,4 @@
 const review = document.querySelector('#review');
-const seatChoice = document.querySelector('#seatChoice');
 const numOfTickets = document.querySelector('#numOfTickets');
 const eventPK = document.querySelector('#eventPK');
 let selectedOption = 'A';
@@ -43,7 +42,7 @@ review.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ seatGrade: seatChoice.value, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
+            body: JSON.stringify({ seatGrade: selectedOption.id, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
         });
 
         if(!response.ok) {
