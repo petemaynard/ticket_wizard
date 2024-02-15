@@ -1,34 +1,52 @@
-<h3>Review Order</h3>
-<div class="row border">
+<div class="m-3">
+  <h3>Review Order</h3>
+  <div class="row">
     <div class="col">
-        <table class="table dm-sans-body">
-            <tbody class="flex-box">
-                {{#each order as |order| }}
-                <tr>
-                    <th scope="row">{{order.perf_date}}</th>
-                    <td>{{order.artist_name}}</td>
-                    <td>{{order.city}}</td>
-                    <td>{{seatData}}</td>
-                    <td>{{order.finalPrice}}</td>
-                    <td>
-                        <input type="number" id="numOfTickets" name="quantity" min="0" max="10">
-                    </td>
-                </tr>
-                {{/each}}
-                <tr class="text-right">
-                    <td>tax line</td>
-                </tr>
-                <tr class="text-right">
-                    <td>fees</td>
-                </tr>
-                <tr class="text-right">
-                    <td>total</td>
-                </tr>   
-            </tbody>
-        </table>
-        <button type="submit">Purchase</button>
+      <table class="table dm-sans-body mt-1">
+        <tbody class="flex-box">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Date</th>
+              <th>Artist</th>
+              <th>City</th>
+              <th>Seat Grade</th>
+              <th>Qty</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tr>
+            <th>Ticket(s) Selected:</th>
+            <td>{{format_date purchase.performanceDate.event_date}}</td>
+            <td>{{purchase.performanceDate.artist.artist_name}}</td>
+            <td>{{purchase.performanceDate.venue.city}}</td>
+            <td>{{purchase.ticketPrice.seat_grade_desc}}</td>
+            <td>{{purchase.seat_count}}</td>
+            <td>${{purchase.ticketPrice.seat_base_price}}</td>
+          </tr>
+          <tbody class="table-group-divider">
+            <tr>
+              <td colspan="5" class="text-end">
+                <table class="table table-borderless">
+                  <tr>
+                    <td>Sales Tax ({{purchase.customer.state}} resident)</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Fees</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-contrast my-2">Purchase</button>
     </div>
+  </div>
 </div>
 
 <script src="./js/script.js"></script>
-
