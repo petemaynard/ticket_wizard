@@ -1,7 +1,11 @@
 module.exports = {
   format_date: (date) => {
-    const dateArray = date.split("-");
-    return `${new Number(dateArray[1])}/${new Number(dateArray[2])}/${new Number(dateArray[0])}`;
+    // Check if date is undefined or not a string
+    if (typeof date !== 'string') {
+      console.error('format_date called with invalid date:', date);
+      // Return a default value or handle the error as appropriate
+      return 'Invalid date';
+    }
   },
 
   format_currency: (amount) => {
