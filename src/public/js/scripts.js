@@ -1,5 +1,5 @@
 const review = document.querySelector('#review');
-const seatChoice = document.querySelector('#seatId');
+const seatChoice = document.querySelector('#seatChoice');
 const numOfTickets = document.querySelector('#numOfTickets');
 const eventPK = document.querySelector('#eventPK');
 let selectedOption = 'A';
@@ -43,9 +43,10 @@ review.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ seatGrade: selectedOption.id, numOfTickets: numOfTickets.value, perfPK: eventPK.textContent })
+            body: JSON.stringify({ seatGrade: seatChoice.value, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
         });
-        if (!response.ok) {
+
+        if(!response.ok) {
             throw new Error('failed to call store POST route');
         }
 
@@ -53,10 +54,7 @@ review.addEventListener('click', async () => {
         console.log('Response: ', data);
         window.location.href = `/reviewOrder`
     } catch (err) {
-        console.error('Error:', err);
-        throw err;
+        console.error(err)
     };
 
 });
-
-
