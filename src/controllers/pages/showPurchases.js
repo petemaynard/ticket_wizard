@@ -17,7 +17,6 @@ router.get("/", async (req, res) => {
                   include: [{ model: Artist }, { model: Venue }]
                }
             ],
-            where: { purchased: 1 },
          }],
       });
 
