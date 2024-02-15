@@ -55,8 +55,7 @@ router.get('/:cust_tix_id', async (req, res) => {
         const totalAmount = (purchaseData.ticketPrice.seat_base_price + taxAmount + feeAmount);
         
         const purchase = purchaseData.get({ plain: true });
-
-         console.log(purchase);       
+    
         res.render('reviewOrder', { purchase, taxAmount, feeAmount, totalAmount });
     } catch (err) {
         console.log("Query failed");
