@@ -26,6 +26,7 @@ router.get('/:cust_tix_id', async (req, res) => {
     console.log('going to review order')
     try {
         const loggedInCustId = req.session.user_id;
+        console.log(req.params)
 
         // const purchaseData = await Purchases.findByPk(req.params.cust_tix_id);
 
