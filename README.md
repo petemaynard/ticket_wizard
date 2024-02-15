@@ -89,13 +89,14 @@ mysql -u root -p
 DROP DATABASE IF EXISTS wizard_db;
 CREATE DATABASE wizard_db;
 ```
-7. Seed database:
-```bash
-SEEDING LOGIC HERE
-```
-8. Run server locally
+7. Run server locally
 ```bash
 node server.js
+```
+8. Seed database:
+```bash
+Interrupt your server.js script and enter the following command
+> node db/seeds/index.js
 ```
 ## Usage
 
