@@ -49,18 +49,23 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     console.log('attempting to post initial Purchase data');
     try {
-        const numOfTickets = req.body.numOfTickets;
+        const tickets = req.body.numOfTickets;
         const seatGrade = req.body.seatGrade;
-        const perfId = req.body.eventPk
-        console.log(perfId)
-        Purchases.create({
-            cust_id: 0,
+        const perf = req.body.perfPK
+        const perfId = parseInt(perf);
+        const numOfTickets = parseInt(tickets);
+        await Purchases.create({
+            cust_id: 1,
             perf_id: perfId,
             seat_grade: seatGrade,
-            seat_count: numOfTickets
+            seat_count: numOfTickets,
+            purchased: false
         });
+
+        console.log('initial purchase post sucessful.')
     } catch (err) {
         res.status(500).json(err);
+        console.log(err);
     }
 })
 
