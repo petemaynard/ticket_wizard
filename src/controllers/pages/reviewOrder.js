@@ -48,24 +48,24 @@ router.get('/:cust_tix_id', async (req, res) => {
         });
 
         const customerTaxRate = await TaxRate.findByPk(purchaseData.customer.state);
-        
-        const taxAmount = calculateTaxes(purchaseData.seat_count, purchaseData.ticketPrice.seat_base_price, customerTaxRate.rate);
 
+        const actualTicketPrice = (purchaseData.ticketPrice.seat_base_price * purchaseData.performanceDate.artist.popularity_index);
+        const subTotal = (actualTicketPrice * purchaseData.seat_count);
+        const taxAmount = calculateTaxes(subTotal, customerTaxRate.rate);
         const feeAmount = 10;
+        const totalAmount = (subTotal + taxAmount + feeAmount);
 
-        const totalAmount = (purchaseData.ticketPrice.seat_base_price + taxAmount + feeAmount);
-        
         const purchase = purchaseData.get({ plain: true });
     
-        res.render('reviewOrder', { purchase, taxAmount, feeAmount, totalAmount });
+        res.render('reviewOrder', { purchase, actualTicketPrice, subTotal, taxAmount, feeAmount, totalAmount });
     } catch (err) {
         console.log("Query failed");
         res.status(500).json(err);
     }
 });
 
-function calculateTaxes(a, b, c) {
-    return a * b * c;
+function calculateTaxes(a, b) {
+    return (a * b);
 }
 
 

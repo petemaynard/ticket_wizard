@@ -15,8 +15,9 @@
                      <th scope="col">Seats Purchased</th>
                   </tr>
                </thead>
-               {{#each customer.purchases as |purchase| }}
                <tbody>
+               {{#each customer.purchases as |purchase| }}
+               {{#if purchase.purchased}}
                   <tr>
                      <th scope="row"></th>
                      <td>{{format_date purchase.performanceDate.event_date}}</td>
@@ -25,8 +26,9 @@
                      <td>{{purchase.ticketPrice.seat_grade_desc}}</td>
                      <td>{{purchase.seat_count}}</td>
                   </tr>
-               </tbody>
+                  {{/if}}
                {{/each}}
+               </tbody>
             </table>
          </div>
       {{else}}

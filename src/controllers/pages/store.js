@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
             seat_count: numOfTickets,
             purchased: false
         });
-
+        console.log('try');
         res.status(200).json({ message: 'ok', data: purchase.cust_tix_id });
     } catch (err) {
         res.status(500).json(err);
