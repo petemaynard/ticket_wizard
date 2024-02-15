@@ -1,19 +1,7 @@
 const review = document.querySelector('#review');
-const seatChoice = document.querySelector('#seatId');
+const seatChoice = document.querySelector('#seatChoice');
 const numOfTickets = document.querySelector('#numOfTickets');
-const eventPK = document.querySelector('#eventPK');
-let selectedOption = 'C';
-
-document.addEventListener('DOMContentLoaded', function() {
-    var selectElement = document.getElementById('seatChoice');
-
-    selectElement.addEventListener('change', function() {
-        // This will give you the selected option element
-        selectedOption = selectElement.options[selectElement.selectedIndex];
-        console.log(selectedOption.id); // Logs the id of the selected option
-    });
-});
-
+const eventPK = document.querySelector('#eventPK')
 
 const fetchData = async () => {
     try {
@@ -37,16 +25,15 @@ const displayData = (data) => {
 
 review.addEventListener('click', async () => {
     try {
-        console.log('selectedOption is', selectedOption)
         const response = await fetch('/store', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ seatGrade: selectedOption.id, numOfTickets: numOfTickets.value, perfPK: eventPK.textContent })
+            body: JSON.stringify({ seatGrade: seatChoice.value, numOfTickets: numOfTickets.value, eventPK: eventPK.textContent })
         });
-        console.log('selectedOption is', selectedOption)
-        if (response.ok) {
+
+        if(!response.ok) {
             throw new Error('failed to call store POST route');
         }
 
@@ -54,9 +41,6 @@ review.addEventListener('click', async () => {
         console.log('Response: ', data);
         window.location.href = `/reviewOrder`
     } catch (err) {
-        console.error('Error:', err);
-        throw err;
+        console.error(err)
     };
 });
-
-
