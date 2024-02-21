@@ -12,6 +12,9 @@ A comprehensive web application designed to streamline the experience of managin
 - [FAQs](#faqs)
 - [Acknowledgments](#acknowledgments)
 
+## Link to Heroku Deployment
+https://ticket-wizard-pete-b1e8f95fed38.herokuapp.com/
+
 ## Core Features
 
 ### 1. User Account Management
